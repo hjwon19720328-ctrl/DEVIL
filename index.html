@@ -3,316 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>OVER SOUL - OS Terminal v11.7 (만우절 에디션 🤡)</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <title>🚨 OVER SOUL 🚨 (킹받는 에디션)</title>
     <style>
         /* =========================================
-           [0] 공통 변수 및 범용 설정
+           [0] 공통 변수 및 범용 설정 (진지함 0%)
            ========================================= */
         :root {
-            --neon-red: #ff3333; 
-            --color-aster: #ffd700; --color-dela: #ff8c00; --color-star: #ff66cc; --color-gord: #ffffff;
-            --font-title: 'Orbitron', sans-serif; --font-data: 'Share Tech Mono', monospace;
+            --neon-red: #ff0000; 
+            --color-aster: #ffff00; --color-dela: #ff8c00; --color-star: #ff00ff; --color-gord: #ffffff;
         }
 
         body {
-            margin: 0; font-family: var(--font-data); overflow-x: hidden; user-select: none;
+            margin: 0; overflow-x: hidden; user-select: none;
             -webkit-tap-highlight-color: transparent; 
-            transition: background-color 0.5s ease, color 0.5s ease, text-shadow 0.5s ease;
+            transition: all 0.2s; /* 정신없는 화면 전환 */
         }
         body.no-scroll { overflow: hidden; height: 100vh; touch-action: none; }
-        h1, h2, h3 { font-family: var(--font-title); margin: 0; }
+        h1, h2, h3 { margin: 0; font-weight: 900; }
 
-        .cyber-border, .decor-corners::before, .decor-corners::after, .char-card, .lobby-btn, header {
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
+        /* 끔찍한 버튼 공통 애니메이션 */
+        .cyber-border { transition: all 0.1s; }
+        .cyber-border:active { transform: scale(0.8) rotate(5deg) !important; }
+
+        /* 무지개 배경 애니메이션 */
+        @keyframes rainbowBG { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+        @keyframes spinFast { 100% { transform: rotate(360deg); } }
+        @keyframes blinkFast { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        @keyframes shake { 0% { transform: translate(1px, 1px) rotate(0deg); } 10% { transform: translate(-1px, -2px) rotate(-1deg); } 20% { transform: translate(-3px, 0px) rotate(1deg); } 30% { transform: translate(3px, 2px) rotate(0deg); } 40% { transform: translate(1px, -1px) rotate(1deg); } 50% { transform: translate(-1px, 2px) rotate(-1deg); } 60% { transform: translate(-3px, 1px) rotate(0deg); } 70% { transform: translate(3px, 1px) rotate(-1deg); } 80% { transform: translate(-1px, -1px) rotate(1deg); } 90% { transform: translate(1px, 2px) rotate(0deg); } 100% { transform: translate(1px, -2px) rotate(-1deg); } }
 
         /* =========================================
-           [1] 테마 1: CLASSIC
+           [1] 테마 1: CLASSIC (윈도우 98 블루스크린)
            ========================================= */
         body.theme-classic {
-            --bg-base: #0a0805; --theme-main: #d4af37; --theme-main-rgb: 212, 175, 55;
-            --theme-bright: #ffe680; --theme-dim: #5c4b1a; 
-            --bg-box-rgb: 26, 22, 15; --bg-nav-rgb: 15, 12, 8; --bg-side-rgb: 10, 8, 5;
-            --theme-glow: 0 0 15px rgba(212, 175, 55, 0.6);
-            --bg-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.1"><path d="M10 10 L90 10 L90 90 L10 90 Z M50 10 L50 90 M10 50 L90 50" stroke="%23d4af37" stroke-width="1" fill="none"/></svg>');
-            background-color: var(--bg-base); color: var(--theme-main); text-shadow: 0 0 2px var(--theme-dim);
+            font-family: "Gulim", "굴림", "돋움", sans-serif !important;
+            background-color: #0000AA; color: #FFFFFF;
+            --theme-main: #FFFFFF; --theme-bright: #FFFF00; --theme-dim: #C0C0C0; 
+            --bg-nav-rgb: 0, 0, 170; --bg-side-rgb: 192, 192, 192;
         }
-        body.theme-classic .cyber-border { border: 1px solid var(--theme-dim); background: rgba(var(--bg-box-rgb), 0.75); border-radius: 0px; backdrop-filter: blur(5px); }
-        body.theme-classic .cyber-border:hover { border-color: var(--theme-main); box-shadow: var(--theme-glow); background: rgba(var(--bg-box-rgb), 0.9); }
-        body.theme-classic .decor-corners::before { content:''; position: absolute; top:-2px; left:-2px; width:12px; height:12px; border-top:2px solid var(--theme-bright); border-left:2px solid var(--theme-bright); pointer-events: none;}
-        body.theme-classic .decor-corners::after { content:''; position: absolute; bottom:-2px; right:-2px; width:12px; height:12px; border-bottom:2px solid var(--theme-bright); border-right:2px solid var(--theme-bright); pointer-events: none;}
-        
-        body.theme-classic .m-desc {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(0,0,0,0.5) 100%);
-            border: 1px solid var(--theme-dim);
-            border-radius: 0;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
-            font-family: 'Nanum Myeongjo', serif;
-            color: #f0e6d2 !important;
-            text-align: justify;
-            line-height: 1.9;
+        body.theme-classic .cyber-border { 
+            border: 4px outset #FFFFFF !important; 
+            background: #C0C0C0; color: #000; border-radius: 0px !important; 
+            box-shadow: 2px 2px 0px #000; font-weight: bold;
         }
+        body.theme-classic .cyber-border:hover { border: 4px inset #FFFFFF !important; background: #DFDFDF; }
+        body.theme-classic .m-desc { background: #000080; border: 2px inset #FFFFFF; color: #FFFF00 !important; }
+        body.theme-classic header { background: #C0C0C0; color: #000; border-bottom: 3px solid #000; }
+        body.theme-classic header h1 { color: #0000AA; text-shadow: none; }
+        body.theme-classic #sidebar { background: #C0C0C0; border-left: 3px solid #000; color: #000; }
+        body.theme-classic .menu-item { color: #000; }
+        body.theme-classic .menu-item.active-menu { color: #0000AA; background: #FFFFFF; border: 1px dotted #000; padding: 5px; }
 
         /* =========================================
-           [2] 테마 2: JAZZ
+           [2] 테마 2: JAZZ (피의 흑염룡 궁서체)
            ========================================= */
         body.theme-jazz {
-            --bg-base: #0a0514; --theme-main: #a64dff; --theme-main-rgb: 166, 77, 255;
-            --theme-bright: #d9b3ff; --theme-dim: #4d0099; 
-            --bg-box-rgb: 20, 10, 35; --bg-nav-rgb: 15, 8, 25; --bg-side-rgb: 10, 5, 18;
-            --theme-glow: 0 0 20px rgba(166, 77, 255, 0.7);
-            --bg-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.1"><circle cx="50" cy="50" r="40" stroke="%23a64dff" stroke-width="1" fill="none"/></svg>');
-            background-color: var(--bg-base); color: var(--theme-main); text-shadow: 0 0 5px var(--theme-main);
+            font-family: "Gungsuh", "궁서", serif !important;
+            background-color: #000000; color: #FF0000; text-shadow: 2px 2px 5px #FF0000;
+            --theme-main: #FF0000; --theme-bright: #AA0000; --theme-dim: #550000; 
+            --bg-nav-rgb: 0, 0, 0; --bg-side-rgb: 20, 0, 0;
         }
-        body.theme-jazz .cyber-border { border: 2px dashed var(--theme-dim); background: rgba(var(--bg-box-rgb), 0.6); border-radius: 12px; backdrop-filter: blur(8px); }
-        body.theme-jazz .cyber-border:hover { border-color: var(--theme-bright); box-shadow: var(--theme-glow); background: rgba(var(--bg-box-rgb), 0.85); }
-        body.theme-jazz .decor-corners::before, body.theme-jazz .decor-corners::after { display: none; }
-        
-        body.theme-jazz .m-desc {
-            background: rgba(166, 77, 255, 0.05);
-            border: none;
-            border-left: 4px dashed var(--theme-main);
-            border-radius: 0 10px 10px 0;
-            font-style: italic;
-            color: #d9b3ff !important;
-            letter-spacing: 0.5px;
+        body.theme-jazz .cyber-border { 
+            border: 2px dashed #FF0000 !important; 
+            background: rgba(50, 0, 0, 0.8); color: #FF0000; border-radius: 0 !important; 
         }
+        body.theme-jazz .cyber-border:hover { animation: shake 0.5s; background: #FF0000; color: #000; text-shadow: none;}
+        body.theme-jazz .m-desc { background: #000; border: 1px solid #FF0000; color: #FF0000 !important; }
+        body.theme-jazz .view-title { animation: blinkFast 0.5s infinite; color: #FF0000; }
 
         /* =========================================
-           [3] 테마 3: POP
+           [3] 테마 3: POP (무지개 눈갱 코믹산스)
            ========================================= */
         body.theme-pop {
-            --bg-base: #14000a; --theme-main: #ff007f; --theme-main-rgb: 255, 0, 127;
-            --theme-bright: #ff66b2; --theme-dim: #800040; 
-            --bg-box-rgb: 35, 5, 20; --bg-nav-rgb: 25, 2, 15; --bg-side-rgb: 15, 0, 10;
-            --theme-glow: 0 0 25px rgba(255, 0, 127, 0.8);
-            --bg-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.1"><path d="M0 100 L100 0 M0 0 L100 100" stroke="%23ff007f" stroke-width="2" fill="none"/></svg>');
-            background-color: var(--bg-base); color: var(--theme-main); text-shadow: 0 0 8px var(--theme-main);
+            font-family: "Comic Sans MS", "맑은 고딕", cursive !important;
+            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+            background-size: 800% 800%; animation: rainbowBG 3s ease infinite;
+            color: #FFFFFF; text-shadow: 2px 2px 0 #000000, -2px -2px 0 #000000;
+            --theme-main: #00FFFF; --theme-bright: #FF00FF; --theme-dim: #FFFF00; 
+            --bg-nav-rgb: 255, 0, 255; --bg-side-rgb: 0, 255, 255;
         }
-        body.theme-pop .cyber-border { border: 2px solid var(--theme-main); background: rgba(var(--bg-box-rgb), 0.5); border-radius: 25px; backdrop-filter: blur(12px); box-shadow: inset 0 0 10px rgba(255,0,127,0.2); }
-        body.theme-pop .cyber-border:hover { border-color: var(--theme-bright); box-shadow: var(--theme-glow); background: rgba(var(--bg-box-rgb), 0.9); transform: scale(1.02);}
-        body.theme-pop .decor-corners::before, body.theme-pop .decor-corners::after { display: none; }
-        body.theme-pop .view-title-decor { border-radius: 10px; height: 3px; background: var(--theme-main);}
-
-        body.theme-pop .m-desc {
-            background: linear-gradient(45deg, rgba(255, 0, 127, 0.15), rgba(0,0,0,0.2));
-            border: 2px solid var(--theme-main);
-            border-radius: 15px;
-            box-shadow: inset 0 0 15px rgba(255, 0, 127, 0.2);
-            color: #fff !important;
-            font-weight: 500;
+        body.theme-pop .cyber-border { 
+            border: 5px dotted lime !important; 
+            background: rgba(255, 0, 255, 0.5); border-radius: 50px !important; box-shadow: 0 0 15px yellow; 
         }
+        body.theme-pop .cyber-border:hover { border-color: yellow !important; background: rgba(0, 255, 255, 0.8); transform: scale(1.1); }
+        body.theme-pop .m-desc { background: rgba(0,0,0,0.5); border: 5px solid lime; border-radius: 30px; color: yellow !important; }
+        body.theme-pop .lobby-main-title { animation: shake 0.5s infinite; }
 
         /* =========================================
            [ 공통 배경 및 UI ]
            ========================================= */
-        body::before {
-            content:''; position: fixed; top:0; left:0; width: 100%; height: 100%; z-index: -1; pointer-events: none;
-            background-image: radial-gradient(var(--bg-base) 0%, transparent 85%), var(--bg-svg);
-            background-size: cover, 120px 120px; opacity: 0.35; transition: 0.5s;
-        }
-
-        #intro { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: var(--bg-base); z-index: 2000; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        .glitch-text { display: flex; justify-content: center; align-items: center; animation: textPulse 1s infinite alternate; }
-        .glitch-text img { max-width: 80vw; max-height: 250px; object-fit: contain; border-radius: 15px; box-shadow: var(--theme-glow); }
+        #intro { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: #000; z-index: 2000; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .glitch-text { display: flex; justify-content: center; align-items: center; }
+        .glitch-text img { max-width: 80vw; max-height: 250px; object-fit: contain; border-radius: 15px; animation: spinFast 1s linear infinite; } /* 로고 미친듯이 회전 */
         
-        .loading-wrap { width: 250px; margin-top: 20px; transition: opacity 0.5s; }
-        .loading-text { font-size: 0.75rem; color: var(--theme-main); margin-bottom: 5px; animation: blink 0.5s infinite; letter-spacing: 1px;}
-        .loading-bar { width: 100%; height: 3px; background: var(--theme-dim); position: relative; overflow: hidden; border-radius: 5px;}
-        .loading-fill { position: absolute; top: 0; left: 0; height: 100%; background: var(--theme-bright); box-shadow: 0 0 10px var(--theme-bright); animation: fillBar 1.5s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; }
+        .loading-wrap { width: 250px; margin-top: 40px; text-align: center;}
+        .loading-text { font-size: 1.2rem; color: #0f0; margin-bottom: 10px; font-weight: bold; animation: blinkFast 0.2s infinite; }
+        .loading-bar { width: 100%; height: 20px; background: #333; position: relative; border: 3px solid #fff;}
+        .loading-fill { position: absolute; top: 0; right: 0; height: 100%; background: #f00; width: 100%; animation: fillBarBackwards 2s forwards; } /* 게이지가 줄어듦 ㅋㅋ */
         
-        .enter-btn { display: none; margin-top: 25px; padding: 8px 18px; font-family: var(--font-title); font-size: 0.95rem; font-weight: bold; color: var(--theme-main); cursor: pointer; text-shadow: var(--theme-glow); letter-spacing: 1px; border-width: 1px; }
-        .enter-btn:hover { background: var(--theme-main); color: #000; text-shadow: none; box-shadow: var(--theme-glow);}
+        .enter-btn { display: none; margin-top: 50px; padding: 20px 40px; font-size: 1.5rem; font-weight: bold; color: #fff; background: red; cursor: pointer; border: 5px dashed yellow; animation: shake 0.3s infinite; }
 
-        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid var(--theme-dim); background: rgba(var(--bg-nav-rgb), 0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;}
-        header h1 { font-size: 1.6rem; color: var(--theme-bright); letter-spacing: 4px; cursor: pointer; text-shadow: var(--theme-glow); }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: rgba(var(--bg-nav-rgb), 0.9); position: sticky; top: 0; z-index: 100;}
+        header h1 { font-size: 1.6rem; color: var(--theme-bright); cursor: pointer; }
         
         .header-controls { display: flex; align-items: center; gap: 8px; }
-        .ctrl-btn { background: rgba(0,0,0,0.5); border: 1px solid var(--theme-main); color: var(--theme-bright); padding: 6px 10px; font-size: 0.7rem; font-family: var(--font-title); cursor: pointer; border-radius: 4px; transition: all 0.3s; box-shadow: 0 0 5px rgba(0,0,0,0.5);}
-        .ctrl-btn:hover { background: var(--theme-main); color: #000; box-shadow: var(--theme-glow); }
+        .ctrl-btn { background: var(--theme-dim); border: 2px solid #000; color: #000; padding: 6px 10px; font-size: 0.8rem; font-weight: bold; cursor: pointer; }
 
         .hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; margin-left: 5px;}
-        .hamburger div { width: 26px; height: 2px; background-color: var(--theme-main); box-shadow: var(--theme-glow); transition: 0.3s;}
+        .hamburger div { width: 26px; height: 4px; background-color: var(--theme-bright); }
         
-        #sidebar { position: fixed; top: 0; right: -100%; width: 250px; height: 100vh; background: rgba(var(--bg-side-rgb), 0.95); border-left: 1px solid var(--theme-main); transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); display: flex; flex-direction: column; padding: 80px 20px 35px; z-index: 90; backdrop-filter: blur(15px);}
+        #sidebar { position: fixed; top: 0; right: -100%; width: 250px; height: 100vh; background: rgba(var(--bg-side-rgb), 1); transition: right 0.4s; display: flex; flex-direction: column; padding: 80px 20px 35px; z-index: 90;}
         #sidebar.open { right: 0; box-shadow: -15px 0 40px rgba(0,0,0,0.9); }
-        .menu-item { font-family: var(--font-title); font-size: 1.15rem; margin-bottom: 25px; color: var(--theme-dim); cursor: pointer; display: flex; align-items: center; gap: 12px; transition: color 0.3s, text-shadow 0.3s; }
-        .menu-item.active-menu { color: var(--theme-bright); text-shadow: var(--theme-glow); font-weight: bold; }
-        .menu-item:hover { color: var(--theme-main); }
+        .menu-item { font-size: 1.2rem; margin-bottom: 25px; cursor: pointer; border-bottom: 2px dashed var(--theme-dim); padding-bottom: 10px;}
 
         #main-content > div { display: none; padding: 15px; padding-bottom: 60px; min-height: calc(100vh - 65px); box-sizing: border-box; }
-        .view-fade-in { animation: smoothFadeIn 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; }
-        .view-title { font-size: 1.4rem; color: var(--theme-bright); margin-bottom: 15px; display:flex; justify-content:space-between; align-items:center; text-shadow: var(--theme-glow); letter-spacing: 1px;}
-        .view-title-decor { flex-grow: 1; height: 1px; background: var(--theme-dim); margin-left: 15px; position: relative;}
+        .view-title { font-size: 1.8rem; margin-bottom: 15px; text-decoration: underline; }
 
         /* 로비 뷰 */
-        #lobby-view { flex-direction: column; gap: 12px; align-items: center; justify-content: center; padding-bottom: 30px;}
-        .lobby-main-title { margin-bottom: 0; transition: 0.5s; display: flex; justify-content: center; align-items: center;}
-        .lobby-main-title img { max-width: 80vw; height: 120px; object-fit: contain; border-radius: 10px; }
+        #lobby-view { flex-direction: column; gap: 15px; align-items: center; justify-content: center; padding-bottom: 30px;}
+        .lobby-main-title { margin-bottom: 0; display: flex; justify-content: center; align-items: center;}
+        .lobby-main-title img { max-width: 80vw; height: 150px; object-fit: contain; animation: spinFast 3s linear infinite; }
         
-        .lobby-sub-title { font-size: 0.8rem; color: var(--theme-bright); letter-spacing: 6px; margin-bottom: 15px; opacity: 0.9; font-weight: bold; text-align: center; margin-top: 10px;}
-        .lobby-btn { width: 100%; max-width: 340px; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-title); font-size: 1.1rem; cursor: pointer; opacity: 0; transform: translateY(20px); letter-spacing: 1px; box-sizing: border-box;}
-        #lobby-view.view-fade-in .lobby-btn { animation: slideUpFade 0.5s forwards; }
-        #lobby-view.view-fade-in .lobby-btn:nth-child(3) { animation-delay: 0.05s; }
-        #lobby-view.view-fade-in .lobby-btn:nth-child(4) { animation-delay: 0.1s; }
-        #lobby-view.view-fade-in .lobby-btn:nth-child(5) { animation-delay: 0.15s; }
-        #lobby-view.view-fade-in .lobby-btn:nth-child(6) { animation-delay: 0.2s; } 
-        .lobby-btn:active { transform: scale(0.96) !important; }
-        .btn-text { transition: 0.3s; }
-        .btn-arrow { font-size:0.6rem; color:var(--theme-bright); transition: 0.3s;}
+        .lobby-sub-title { font-size: 1.2rem; background: yellow; color: red; padding: 5px; border: 2px solid red; transform: rotate(-5deg); margin-bottom: 20px; }
+        .lobby-btn { width: 100%; max-width: 340px; padding: 20px; text-align: center; font-size: 1.2rem; cursor: pointer; margin-bottom: 10px;}
 
-        /* 설정 뷰 및 슬라이더 */
-        .settings-btn-wrap { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
-        .settings-btn { width: 100%; max-width: 400px; padding: 18px 20px; display: flex; justify-content: flex-start; align-items: center; font-family: var(--font-title); font-size: 1rem; cursor: pointer; opacity: 0; transform: translateY(20px); box-sizing: border-box; }
-        .settings-btn.active-theme { border-color: var(--theme-bright); color: var(--theme-bright); font-weight: bold; background: rgba(var(--theme-main-rgb), 0.3); box-shadow: var(--theme-glow);}
-        
-        input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; outline: none; margin: 10px 0;}
-        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 18px; width: 18px; border-radius: 50%; background: var(--theme-bright); cursor: pointer; margin-top: -7px; box-shadow: var(--theme-glow); }
-        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px; cursor: pointer; background: var(--theme-dim); border-radius: 2px; }
-
-        #settings-view.view-fade-in .settings-btn { animation: slideUpFade 0.5s forwards; }
-        #settings-view.view-fade-in .settings-btn-wrap .settings-btn:nth-child(1) { animation-delay: 0.1s; }
-        #settings-view.view-fade-in .settings-btn-wrap .settings-btn:nth-child(2) { animation-delay: 0.2s; }
-        #settings-view.view-fade-in .settings-btn-wrap .settings-btn:nth-child(3) { animation-delay: 0.3s; }
-        #settings-view.view-fade-in .vol-wrap { animation: slideUpFade 0.5s forwards; animation-delay: 0.4s; opacity: 0; transform: translateY(20px);}
+        /* 설정 뷰 */
+        .settings-btn-wrap { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
+        .settings-btn { width: 100%; padding: 20px; font-size: 1.1rem; cursor: pointer; text-align: center;}
+        input[type=range] { width: 100%; height: 30px; cursor: pointer; }
 
         /* 뉴스 티커 */
-        .news-ticker-wrap { position: fixed; bottom: 0; left: 0; width: 100%; height: 32px; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); border-top: 1px solid var(--theme-main); display: flex; align-items: stretch; z-index: 50; box-shadow: 0 -2px 10px rgba(0,0,0,0.5);}
-        .news-static-label { background: var(--theme-main); color: #000; padding: 0 15px; font-weight: bold; font-family: var(--font-title); font-size: 0.8rem; display: flex; align-items: center; justify-content: center; z-index: 51; flex-shrink: 0; letter-spacing: 2px; box-shadow: 2px 0 5px rgba(0,0,0,0.5); transition: background 0.3s;}
-        .news-scroll-area { flex: 1; overflow: hidden; display: flex; align-items: center; position: relative; }
-        .news-content { display: inline-block; white-space: nowrap; font-size: 0.85rem; color: var(--theme-bright); font-family: 'Malgun Gothic', sans-serif; animation: ticker 40s linear infinite; padding-left: 100%;}
-        .news-content span { margin-right: 80px; text-shadow: none; letter-spacing: 0.5px;}
+        .news-ticker-wrap { position: fixed; bottom: 0; left: 0; width: 100%; height: 40px; background: yellow; border-top: 5px solid red; display: flex; align-items: stretch; z-index: 50; }
+        .news-static-label { background: red; color: white; padding: 0 15px; font-weight: 900; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
+        .news-scroll-area { flex: 1; overflow: hidden; display: flex; align-items: center; }
+        .news-content { display: inline-block; white-space: nowrap; font-size: 1.1rem; color: black; font-weight: bold; animation: ticker 15s linear infinite; padding-left: 100%; text-shadow: none;}
+        .news-content span { margin-right: 50px; }
 
         /* 인물 뷰 */
-        .filter-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-        .filter-btn { flex: 1 1 calc(33% - 8px); background: rgba(var(--bg-box-rgb), 0.5); border: 1px solid var(--theme-dim); color: var(--theme-main); padding: 10px 0; font-family: var(--font-title); font-size: 0.8rem; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(4px); border-radius: inherit;}
-        .filter-btn.active { background: rgba(var(--theme-main-rgb), 0.3); border-color: var(--theme-bright); color: var(--theme-bright); text-shadow: var(--theme-glow); box-shadow: inset 0 0 12px rgba(var(--theme-main-rgb), 0.3); }
-        .filter-btn.filter-extra { background: rgba(var(--theme-main-rgb), 0.1); border-color: var(--theme-bright); font-weight:bold; }
-        .filter-btn.filter-extra.active { background: rgba(var(--theme-main-rgb), 0.4); box-shadow: inset 0 0 15px rgba(var(--theme-main-rgb), 0.5), 0 0 10px var(--theme-main); }
-
-        .char-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        .char-card { padding: 10px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 8px;}
-        .char-card:active { transform: scale(0.95); }
-        .char-fade-in { animation: smoothFadeIn 0.3s forwards; opacity: 0; }
-        .mini-profile-img { width: 40px; height: 50px; border: 1px solid var(--theme-dim); flex-shrink: 0; overflow: hidden; background: #000; border-radius: inherit;}
-        .mini-profile-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; transition: 0.3s;}
-        .char-card:hover .mini-profile-img img { opacity: 1; transform: scale(1.1); }
-        .char-info-wrap { flex: 1; overflow: hidden; display: flex; flex-direction: column; justify-content: center;}
-        .card-header { display: flex; justify-content: space-between; color: var(--theme-main); opacity: 0.8; font-size: 0.6rem; margin-bottom: 2px; font-family: var(--font-data);}
-        .char-name { font-size: 0.9rem; color: #fff; font-weight: bold; font-family: var(--font-title); margin-bottom: 2px; text-shadow: 0 0 3px #fff; line-height: 1.1; white-space: normal; word-break: keep-all;}
-        .char-faction { text-transform: uppercase; border-bottom: 1px solid rgba(255, 255, 255, 0.2); padding-bottom: 2px; font-weight: bold; font-size: 0.65rem;}
+        .filter-container { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 20px; }
+        .filter-btn { flex: 1 1 calc(33% - 5px); padding: 15px 0; font-size: 0.9rem; cursor: pointer; text-align: center; }
+        
+        .char-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .char-card { padding: 15px; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center;}
+        .mini-profile-img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--theme-bright); overflow: hidden; }
+        .mini-profile-img img { width: 100%; height: 100%; object-fit: cover; }
+        .char-name { font-size: 1.2rem; font-weight: 900; margin-bottom: 5px; }
 
         /* 지도 뷰 */
-        .map-wrapper { width: 100%; height: 60vh; border: 2px solid var(--theme-main); position: relative; overflow: hidden; background-color: #010101; background-image: radial-gradient(circle at center, rgba(30,30,30,0.8) 0%, rgba(0,0,0,1) 100%); }
-        .map-overlay { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; }
-        .map-grid { background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px); background-size: 20px 20px; }
-        .map-scanlines { height: 15px; background: rgba(255, 255, 255, 0.1); animation: mapScan 6s linear infinite; }
+        .map-wrapper { width: 100%; height: 60vh; background: #fff url('https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif') center/cover; position: relative; overflow: hidden; border: 10px ridge var(--theme-main); }
+        .tower-mark { position: absolute; top: 50%; left: 50%; width: 50px; height: 50px; background: red; border-radius: 50%; transform: translate(-50%, -50%); animation: blinkFast 0.5s infinite; cursor: pointer;}
         
-        .tower-mark { position: absolute; top: 48%; left: 55%; width: 16px; height: 16px; background: #fff; box-shadow: 0 0 20px #fff; transform: translate(-50%, -50%) rotate(45deg); z-index: 20; cursor: pointer; transition: 0.3s; }
-        .tower-mark:hover { transform: translate(-50%, -50%) rotate(45deg) scale(1.5); }
+        .map-zone { position: absolute; border: 5px solid #000; display: flex; justify-content: center; align-items: center; font-size: 1.2rem; font-weight: 900; background: rgba(255,255,255,0.8); color: #000; cursor: pointer; text-shadow: none;}
+        .zone-pol-aster { width: 120px; height: 80px; top: 10%; left: 10%; transform: rotate(-10deg);}
+        .zone-pol-dela { width: 100px; height: 100px; bottom: 10%; right: 10%; border-radius: 50%;}
+        .zone-pol-star { width: 90px; height: 90px; top: 20%; right: 20%; transform: rotate(15deg);}
         
-        .map-zone { position: absolute; border: 2px solid; display: flex; justify-content: center; align-items: center; font-family: var(--font-title); font-size: 0.7rem; font-weight: bold; color: #fff; text-shadow: 0 0 8px #000; transition: all 0.3s ease; backdrop-filter: blur(2px); cursor: pointer; border-radius: inherit; }
-        .map-zone:active { transform: scale(1.08); background: rgba(255,255,255,0.25); z-index: 21; }
-        .zone-pol-aster { width: 140px; height: 120px; top: 20%; left: 5%; background: rgba(255, 215, 0, 0.2); border-color: var(--color-aster); box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); clip-path: polygon(10% 0%, 100% 15%, 90% 90%, 0% 100%); border-radius: 0 !important;}
-        .zone-pol-dela { width: 100px; height: 90px; bottom: 15%; left: 65%; background: rgba(255, 140, 0, 0.2); border-color: var(--color-dela); box-shadow: 0 0 20px rgba(255, 140, 0, 0.4); clip-path: polygon(0% 20%, 80% 0%, 100% 80%, 30% 100%); border-radius: 0 !important;}
-        .zone-pol-star { width: 75px; height: 70px; top: 15%; left: 75%; background: rgba(255, 102, 204, 0.2); border-color: var(--color-star); box-shadow: 0 0 20px rgba(255, 102, 204, 0.4); clip-path: polygon(20% 0%, 100% 20%, 80% 100%, 0% 80%); border-radius: 0 !important;}
-        
-        .landmark { position: absolute; color: var(--neon-red); font-family: var(--font-title); font-size: 1.5rem; font-weight: 900; text-shadow: 0 0 10px var(--neon-red), 0 0 20px #ff0000; cursor: pointer; z-index: 25; transition: transform 0.2s; }
-        .landmark:hover { transform: scale(1.5); }
-        .lm-aster { top: 25%; left: 12%; }
-        .lm-dela { bottom: 22%; left: 72%; }
-        .lm-star { top: 22%; left: 82%; }
-        .lm-center { top: 43%; left: 55%; transform: translate(-50%, 0); }
-
-        .map-data-panel { font-size: 0.8rem; color: var(--theme-main); margin-top: 15px; border-top: 1px solid var(--theme-dim); padding-top: 12px; cursor: default; transition: 0.3s;}
+        .landmark { position: absolute; font-size: 2.5rem; cursor: pointer; animation: shake 1s infinite; }
+        .lm-aster { top: 30%; left: 20%; }
+        .lm-dela { bottom: 30%; left: 70%; }
+        .lm-star { top: 40%; left: 80%; }
 
         /* 시스템 DB 뷰 */
-        .db-container { display: flex; flex-direction: column; gap: 15px; }
-        .db-folder { padding: 16px 20px; font-family: var(--font-title); font-size: 1.15rem; color: var(--theme-bright); cursor: pointer; }
-        .db-folder::before { content: '[+] '; color: var(--theme-main); margin-right: 8px; }
-        .db-folder.open::before { content: '[-] '; }
-        .db-folder-content { display: none; flex-direction: column; gap: 8px; padding-left: 20px; margin-top: -8px; margin-bottom: 15px; border-left: 2px dashed var(--theme-dim); }
-        .db-folder-content.show { display: flex; animation: smoothFadeIn 0.3s ease forwards; }
-        .db-file { padding: 14px; font-size: 1.05rem; color: #fff; cursor: pointer; }
-        .db-file.active { border-color: var(--theme-bright); padding-left: 25px; }
-        .db-data-box { display: none; padding: 18px; font-size: 0.95rem; line-height: 1.8; margin-top: -8px; margin-bottom: 15px; color: var(--theme-bright); }
-        .db-data-box.show { display: block; animation: slideDownFade 0.3s ease forwards; }
-        .highlight { color: #fff; padding: 2px 5px; font-family: var(--font-title); background: rgba(255,255,255,0.2); border-radius: 3px;}
+        .db-folder { padding: 20px; font-size: 1.3rem; font-weight: bold; cursor: pointer; margin-bottom: 10px;}
+        .db-folder-content { display: none; flex-direction: column; gap: 10px; padding: 10px; background: rgba(0,0,0,0.3);}
+        .db-folder-content.show { display: flex; }
+        .db-file { padding: 15px; font-size: 1.1rem; cursor: pointer; font-weight: bold;}
+        .db-data-box { display: none; padding: 20px; font-size: 1rem; line-height: 1.5; margin-bottom: 10px; }
+        .db-data-box.show { display: block; }
 
-        /* 💡 모달 팝업 및 캐릭터 네비게이션(화살표) */
-        .generic-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.85); z-index: 500; backdrop-filter: blur(8px); justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; opacity: 0; transition: opacity 0.3s ease; }
-        .generic-modal.show { display: flex; opacity: 1; }
-        .modal-box { width: 100%; max-width: 440px; max-height: 85vh; position: relative; transform: translateY(20px) scale(0.95); transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); display: flex; flex-direction: column; background: #0a0a0a;}
-        .generic-modal.show .modal-box { transform: translateY(0) scale(1); }
-        .modal-close { position: absolute; top: 15px; right: 20px; color: var(--theme-bright); font-size: 2rem; cursor: pointer; font-family: var(--font-title); transition: transform 0.3s; z-index: 10;}
+        /* 모달 팝업 */
+        .generic-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.9); z-index: 500; justify-content: center; align-items: center; padding: 10px; box-sizing: border-box; }
+        .generic-modal.show { display: flex; }
+        .modal-box { width: 100%; max-width: 440px; max-height: 90vh; position: relative; display: flex; flex-direction: column; background: var(--bg-base); border: 5px solid var(--theme-bright);}
+        .modal-close { position: absolute; top: 0; right: 0; background: red; color: white; font-size: 2rem; padding: 10px 20px; cursor: pointer; font-weight: bold; z-index: 10; border: 3px solid white;}
         
-        .modal-scroll-area { flex: 1; overflow-y: auto; padding: 25px; padding-bottom: 45px; } 
-        .modal-scroll-area::-webkit-scrollbar { width: 6px; }
-        .modal-scroll-area::-webkit-scrollbar-thumb { background: var(--theme-dim); border-radius: 3px;}
-        
-        /* 💡 프로필 전환 애니메이션 클래스 */
-        .anim-next { animation: slideInRight 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; }
-        .anim-prev { animation: slideInLeft 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; }
-        .anim-pop { animation: popIn 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) forwards; }
+        .modal-scroll-area { flex: 1; overflow-y: auto; padding: 20px; padding-top: 60px; } 
 
-        /* 화살표 스타일 */
-        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); font-size: 3rem; color: rgba(255, 255, 255, 0.3); cursor: pointer; padding: 20px; z-index: 520; transition: 0.3s; user-select: none; font-family: sans-serif; -webkit-tap-highlight-color: transparent;}
-        .nav-arrow:hover { color: var(--theme-bright); text-shadow: var(--theme-glow); transform: translateY(-50%) scale(1.1);}
-        .nav-arrow.left { left: 5%; }
-        .nav-arrow.right { right: 5%; }
-        @media (max-width: 768px) {
-            .nav-arrow { font-size: 2.5rem; padding: 10px; }
-            .nav-arrow.left { left: 0; }
-            .nav-arrow.right { right: 0; }
-        }
+        .m-profile-img-wrap { width: 100%; height: 250px; background: #fff; display: flex; justify-content: center; align-items: center; border: 5px dashed var(--theme-dim); margin-bottom: 20px; overflow: hidden;}
+        .m-profile-img-wrap img { width: 100%; height: 100%; object-fit: contain; }
+        .m-name { font-size: 2.5rem; text-decoration: underline; margin-bottom: 10px; color: var(--theme-bright);}
+        .m-grid { display: grid; grid-template-columns: 1fr; gap: 5px; margin-bottom: 20px; }
+        .m-stat-box { padding: 15px; font-size: 1.2rem; }
+        .tag { display: inline-block; padding: 5px 10px; background: var(--theme-dim); color: #000; font-size: 1rem; font-weight: 900; margin-right: 5px; margin-bottom: 5px; text-shadow: none;}
 
-        .m-header { border-bottom: 2px dashed var(--theme-dim); padding-bottom: 15px; margin-bottom: 20px; }
-        .m-name { font-size: 1.8rem; color: #fff; font-weight: bold; font-family: var(--font-title); }
-        .m-profile-img-wrap { width: 100%; height: 240px; border: 1px solid var(--theme-dim); margin-bottom: 18px; overflow: hidden; position: relative; cursor: zoom-in; background: #000; display: flex; justify-content: center; align-items: center; border-radius: inherit;}
-        .m-profile-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; opacity: 0.95; }
-        .m-profile-img-wrap:hover img { transform: scale(1.05); opacity: 1; }
-        .m-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
-        .m-stat-box { border: 1px solid var(--theme-dim); padding: 12px; }
-        .m-label { font-size: 0.75rem; color: var(--theme-main); opacity: 0.9; display: block; margin-bottom: 4px; font-weight: bold;}
-        .m-val { font-size: 1rem; color: var(--theme-bright); font-weight: bold; }
-        .m-section-title { font-size: 1rem; color: var(--theme-main); border-left: 4px solid var(--theme-bright); padding-left: 8px; margin-bottom: 8px; font-family: var(--font-title);}
-        .m-desc { font-size: 0.9rem; line-height: 1.7; padding: 15px; transition: all 0.4s ease; }
-        .tag { display: inline-block; padding: 4px 10px; border: 1px solid var(--theme-dim); color: var(--theme-bright); font-size: 0.75rem; border-radius: 4px; margin-right: 6px; margin-bottom: 6px; font-weight: bold;}
-        .tag-warning { background: rgba(255, 51, 51, 0.2); border-color: rgba(255, 51, 51, 0.5); color: #fff; }
-        .text-glitch { position: relative; color: var(--color-gord); font-weight: 900; animation: textGlitch 0.3s infinite; text-shadow: 2px 0 red, -2px 0 var(--theme-main); }
-        .tag-glitch { background: rgba(255, 255, 255, 0.2); border-color: rgba(255, 255, 255, 0.5); color: #fff; text-shadow: 1px 0 red, -1px 0 blue; }
+        .m-expressions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .exp-box { height: 100px; border: 3px solid var(--theme-main); display: flex; justify-content: center; align-items: flex-end; position: relative; overflow: hidden; background: #000;}
+        .exp-box img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.8;}
+        .exp-label { position: relative; z-index: 10; font-size: 1rem; background: rgba(0,0,0,0.7); color: #fff; padding: 2px 10px; margin-bottom: 5px;}
 
-        .m-expressions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
-        .exp-box { height: 65px; background: #000; border: 1px solid var(--theme-dim); border-radius: inherit; display: flex; justify-content: center; align-items: flex-end; position: relative; cursor: zoom-in; overflow: hidden; }
-        .exp-box img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5; transition: 0.3s; }
-        .exp-box:hover img { opacity: 1; transform: scale(1.1); }
-        .exp-label { position: relative; z-index: 10; font-size: 0.65rem; color: #fff; font-weight: bold; text-shadow: 0 0 4px #000, 0 0 6px #000; padding-bottom: 5px; pointer-events: none; letter-spacing: -0.5px;}
+        #img-viewer { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.9); z-index: 3000; justify-content: center; align-items: center; }
+        #img-viewer.show { display: flex; }
+        #img-viewer img { max-width: 90%; max-height: 90%; border: 10px solid rainbow; animation: shake 0.5s infinite;}
 
-        #map-modal-title { font-family: var(--font-title); font-size: 1.5rem; color: var(--theme-bright); margin-bottom: 12px; }
-        #map-modal-desc { font-size: 0.95rem; color: #eee; line-height: 1.8; }
-
-        #img-viewer { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.95); z-index: 3000; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s; cursor: zoom-out; backdrop-filter: blur(5px);}
-        #img-viewer.show { display: flex; opacity: 1; }
-        #img-viewer img { max-width: 95%; max-height: 95%; border: 2px solid var(--theme-main); object-fit: contain; border-radius: inherit;}
-        .viewer-close { position: absolute; top: 20px; right: 30px; color: var(--theme-bright); font-size: 3.5rem; cursor: pointer; font-family: var(--font-title); z-index: 3010; }
-
-        @keyframes introEnd { to { opacity: 0; visibility: hidden; display: none;} }
-        @keyframes textPulse { from { opacity: 0.7; } to { opacity: 1; } }
-        @keyframes fillBar { 0% { width: 0; } 50% { width: 70%; } 100% { width: 100%; } }
-        @keyframes mapScan { 0% { top: -15px; } 100% { top: 100%; } }
-        @keyframes smoothFadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes slideDownFade { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes slideUpFade { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes introEnd { to { opacity: 0; visibility: hidden; } }
+        @keyframes fillBarBackwards { 0% { width: 100%; } 100% { width: 0%; } }
         @keyframes ticker { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
-        @keyframes textGlitch { 0% { transform: translate(0); } 20% { transform: translate(-2px, 1px); } 40% { transform: translate(-1px, -1px); } 60% { transform: translate(2px, 1px); } 80% { transform: translate(1px, -1px); } 100% { transform: translate(0); } }
-        
-        /* 💡 추가 모션 애니메이션 키프레임 */
-        @keyframes slideInRight { from { transform: translateX(30px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-        @keyframes slideInLeft { from { transform: translateX(-30px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-        @keyframes popIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     </style>
 </head>
 <body class="theme-pop">
@@ -324,16 +209,16 @@
             <img src="https://igx.kr/u/LJ/g/h" alt="APRIL FOOLS TITLE">
         </div>
         <div class="loading-wrap" id="loading-wrap">
-            <div class="loading-text" id="intro-loading-text">CONNECTING TO O.S CORE NETWORK... (선 꼬임)</div>
+            <div class="loading-text" id="intro-loading-text">서버 터지는 중... 선 뽑음ㅋ</div>
             <div class="loading-bar"><div class="loading-fill"></div></div>
         </div>
-        <div class="enter-btn cyber-border decor-corners" id="btn-enter" onclick="startSystem()">
-            [ 절대 누르지 마시오 / DO NOT ENTER ]
+        <div class="enter-btn" id="btn-enter" onclick="startSystem()">
+            [ 절대 누르지 마시오 (클릭) ]
         </div>
     </div>
 
     <header>
-        <h1 onclick="navTo('lobby')" id="header-title">O.S Terminal 🤡</h1>
+        <h1 onclick="navTo('lobby')" id="header-title"><marquee scrollamount="20">🚨 OVER SOUL 🚨</marquee></h1>
         <div style="display: flex; align-items: center;">
             <div class="header-controls">
                 <div class="ctrl-btn" onclick="cycleTheme()" id="ctrl-theme">🎨 컨셉변경</div>
@@ -346,99 +231,96 @@
     </header>
 
     <div id="sidebar">
-        <div class="menu-item active-menu" id="nav-lobby" onclick="navTo('lobby')">> 로비 터미널</div>
-        <div class="menu-item" id="nav-character" onclick="navTo('character')">> 인물 (흑역사) 명부</div>
-        <div class="menu-item" id="nav-map" onclick="navTo('map')">> 동네 지도</div>
-        <div class="menu-item" id="nav-system" onclick="navTo('system')">> TMI 설정들</div>
-        <div class="menu-item" id="nav-settings" onclick="navTo('settings')">> 단말기 설정</div>
+        <div class="menu-item active-menu" id="nav-lobby" onclick="navTo('lobby')">> 로비 (쓸데없음)</div>
+        <div class="menu-item" id="nav-character" onclick="navTo('character')">> 흑역사 박제소</div>
+        <div class="menu-item" id="nav-map" onclick="navTo('map')">> 동네 싸움 구경</div>
+        <div class="menu-item" id="nav-system" onclick="navTo('system')">> TMI 설명서</div>
+        <div class="menu-item" id="nav-settings" onclick="navTo('settings')">> 아무 소용없는 설정</div>
     </div>
 
     <div id="main-content">
-        <div id="lobby-view" class="view-fade-in" style="display: flex;">
+        <div id="lobby-view" style="display: flex;">
             <h2 class="lobby-main-title">
                 <img src="https://igx.kr/u/LJ/g/h" alt="APRIL FOOLS TITLE">
             </h2>
-            <div class="lobby-sub-title" id="lobby-sub-title">OVER SOUL APRIL FOOLS EDITION</div>
+            <div class="lobby-sub-title" id="lobby-sub-title">만우절 에디션 당첨 ㅋ</div>
             
-            <div class="cyber-border decor-corners lobby-btn" onclick="navTo('character')">
-                <span class="btn-text" id="btn-txt-char">흑역사 열람</span> <span class="btn-arrow">ACCESS ></span>
+            <div class="cyber-border lobby-btn" onclick="navTo('character')">
+                <span id="btn-txt-char">흑역사 열람</span>
             </div>
-            <div class="cyber-border decor-corners lobby-btn" onclick="navTo('map')">
-                <span class="btn-text" id="btn-txt-map">동네 핫플 확인</span> <span class="btn-arrow">VIEW ></span>
+            <div class="cyber-border lobby-btn" onclick="navTo('map')">
+                <span id="btn-txt-map">동네 핫플 확인</span>
             </div>
-            <div class="cyber-border decor-corners lobby-btn" onclick="navTo('system')">
-                <span class="btn-text" id="btn-txt-sys">TMI 설정집 보기</span> <span class="btn-arrow">VIEW ></span>
+            <div class="cyber-border lobby-btn" onclick="navTo('system')">
+                <span id="btn-txt-sys">TMI 설정집 보기</span>
             </div>
-            <div class="cyber-border decor-corners lobby-btn" onclick="navTo('settings')">
-                <span class="btn-text" id="btn-txt-set">쓸데없는 환경 설정</span> <span class="btn-arrow">CONFIG ></span>
+            <div class="cyber-border lobby-btn" onclick="navTo('settings')">
+                <span id="btn-txt-set">쓸데없는 환경 설정</span>
             </div>
         </div>
 
         <div id="character-view">
-            <div class="view-title" id="title-char">DB_WEIRDOS <div class="view-title-decor"></div></div>
+            <div class="view-title" id="title-char">🤡 DB_WEIRDOS 🤡</div>
             <div class="filter-container">
                 <button class="filter-btn active cyber-border" onclick="filterData('ALL', this)">전부 보기</button>
-                <button class="filter-btn cyber-border" onclick="filterData('애스터', this)">애스터 (부자들)</button>
-                <button class="filter-btn cyber-border" onclick="filterData('델라쿠르아', this)">델라쿠르아 (엄근진)</button>
-                <button class="filter-btn cyber-border" onclick="filterData('스타 더스트', this)">스타 더스트 (관종)</button>
-                <button class="filter-btn cyber-border" onclick="filterData('무소속', this)">무소속 (아싸들)</button>
+                <button class="filter-btn cyber-border" onclick="filterData('애스터', this)">부자들</button>
+                <button class="filter-btn cyber-border" onclick="filterData('델라쿠르아', this)">엄근진</button>
+                <button class="filter-btn cyber-border" onclick="filterData('스타 더스트', this)">관종들</button>
+                <button class="filter-btn cyber-border" onclick="filterData('무소속', this)">아싸들</button>
                 <button class="filter-btn filter-extra cyber-border" onclick="filterData('EXTRA', this)">쩌리들</button>
             </div>
             <div class="char-grid" id="char-container"></div>
         </div>
 
         <div id="map-view">
-            <div class="view-title" id="title-map">TOUR_MAP // HOT <div class="view-title-decor"></div></div>
+            <div class="view-title" id="title-map">🗺️ 동네 싸움 지도 🗺️</div>
             <div class="map-wrapper cyber-border">
-                <div class="map-overlay map-grid"></div>
-                <div class="map-overlay map-scanlines"></div>
                 
-                <div class="map-zone zone-pol-aster" onclick="openMapModal('faction', 'aster')">ASTER</div>
-                <div class="map-zone zone-pol-dela" onclick="openMapModal('faction', 'dela')">DELACRUA</div>
-                <div class="map-zone zone-pol-star" onclick="openMapModal('faction', 'star')">STARDUST</div>
+                <div class="map-zone zone-pol-aster" onclick="openMapModal('faction', 'aster')">애스터 집</div>
+                <div class="map-zone zone-pol-dela" onclick="openMapModal('faction', 'dela')">델라 꼰대들</div>
+                <div class="map-zone zone-pol-star" onclick="openMapModal('faction', 'star')">별가루 클럽</div>
                 
-                <div class="landmark lm-aster" onclick="openMapModal('landmark', 'aster'); event.stopPropagation();">X</div>
-                <div class="landmark lm-dela" onclick="openMapModal('landmark', 'dela'); event.stopPropagation();">X</div>
-                <div class="landmark lm-star" onclick="openMapModal('landmark', 'star'); event.stopPropagation();">X</div>
-                <div class="landmark lm-center" onclick="openMapModal('landmark', 'center'); event.stopPropagation();">X</div>
-
+                <div class="landmark lm-aster" onclick="openMapModal('landmark', 'aster'); event.stopPropagation();">💩</div>
+                <div class="landmark lm-dela" onclick="openMapModal('landmark', 'dela'); event.stopPropagation();">💩</div>
+                <div class="landmark lm-star" onclick="openMapModal('landmark', 'star'); event.stopPropagation();">💩</div>
+                
                 <div class="tower-mark" onclick="openMapModal('faction', 'center')"></div>
             </div>
-            <div class="map-data-panel">
-                <div style="font-weight:bold; margin-bottom:6px; font-family: var(--font-title);" id="map-help-title">[ 아무 도움 안되는 도움말 ]</div>
-                <div style="margin-bottom: 4px;" id="map-help-1">> 지도에 <span style="color:var(--neon-red); font-weight:bold; font-size: 0.9rem;">[ X ]</span> 마크를 누르면... 어... 뭔가 나옵니다.</div>
-                <div id="map-help-2">> 각 가문 <span style="color:#fff; font-weight:bold;">[ 영역 ]</span>을 누르면 남의 집 사정을 훔쳐볼 수 있습니다.</div>
+            <div style="margin-top: 15px; font-weight: bold; font-size: 1.2rem;">
+                [ 아무 도움 안 되는 도움말 ]<br>
+                > 지도에 💩 마크 누르면 어... 뭐가 나옴.<br>
+                > 각 가문 구역 누르면 남의 집 험담 나옴.
             </div>
         </div>
 
         <div id="system-view">
-            <div class="view-title" id="title-sys">OS_DATABASE // TMI 모음 <div class="view-title-decor"></div></div>
+            <div class="view-title" id="title-sys">📚 안 읽어도 되는 TMI 📚</div>
             <div class="db-container" id="db-container"></div>
         </div>
 
         <div id="settings-view">
-            <div class="view-title" id="title-set">USELESS_SETTINGS <div class="view-title-decor"></div></div>
+            <div class="view-title" id="title-set">⚙️ USELESS SETTINGS ⚙️</div>
             
-            <div class="m-section-title" style="margin-top: 25px; font-size: 1.1rem;" id="set-subtitle">[ UI 컨셉 변경 ]</div>
-            <div style="color:var(--theme-bright); font-size:0.8rem; margin-bottom: 15px; opacity:0.8;" id="setting-desc">바꿔봤자 노래는 똑같습니다. (만우절 ㅋ)</div>
+            <div style="font-size: 1.5rem; font-weight: bold; margin-top: 20px;">[ UI 컨셉 변경 ]</div>
+            <div style="margin-bottom: 15px; font-weight: bold;">바꿔봤자 노래는 안 바뀝니다. (만우절 ㅋ)</div>
             
             <div class="settings-btn-wrap">
-                <div class="settings-btn cyber-border decor-corners" id="btn-theme-classic" onclick="setTheme('theme-classic', this, 'eya.mp3')">
-                    <span id="set-btn-1">[01] CLASSIC (초특급 우아한 오케스트라... 인 척)</span>
+                <div class="settings-btn cyber-border" onclick="setTheme('theme-classic')">
+                    [01] CLASSIC (윈도우 98 블루스크린)
                 </div>
-                <div class="settings-btn cyber-border decor-corners" id="btn-theme-jazz" onclick="setTheme('theme-jazz', this, 'eya.mp3')">
-                    <span id="set-btn-2">[02] JAZZ (뒷골목 중二병 갬성)</span>
+                <div class="settings-btn cyber-border" onclick="setTheme('theme-jazz')">
+                    [02] JAZZ (피의 흑염룡 궁서체)
                 </div>
-                <div class="settings-btn cyber-border decor-corners active-theme" id="btn-theme-pop" onclick="setTheme('theme-pop', this, 'eya.mp3')">
-                    <span id="set-btn-3">[03] POP (오글거리는 아이돌 스킨)</span>
+                <div class="settings-btn cyber-border active-theme" onclick="setTheme('theme-pop')">
+                    [03] POP (무지개 눈갱 코믹산스)
                 </div>
             </div>
 
-            <div class="m-section-title vol-wrap" style="margin-top: 35px; font-size: 1.1rem;">[ 시끄러움 조절기 ]</div>
-            <div class="cyber-border decor-corners vol-wrap" style="padding: 15px; margin-top: 10px; box-sizing: border-box; width: 100%; max-width: 400px;">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <span style="color:var(--theme-bright); font-family: var(--font-title); font-size: 0.9rem;">VOLUME</span>
-                    <span id="vol-display" style="color:var(--theme-main); font-weight: bold; font-family: var(--font-title);">100%</span>
+            <div style="font-size: 1.5rem; font-weight: bold; margin-top: 40px;">[ 시끄러움 조절기 ]</div>
+            <div class="cyber-border" style="padding: 20px; margin-top: 10px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <span style="font-weight: 900; font-size: 1.2rem;">고막 테러 지수</span>
+                    <span id="vol-display" style="font-weight: 900; font-size: 1.2rem; color: red;">100%</span>
                 </div>
                 <input type="range" id="vol-slider" min="0" max="100" value="100" oninput="updateVolume(this.value)">
             </div>
@@ -453,66 +335,59 @@
     </div>
 
     <div id="map-modal" class="generic-modal" onclick="if(event.target===this) closeMapModal()">
-        <div class="modal-box cyber-border decor-corners" style="height: auto; max-height: 65vh;">
-            <div class="modal-close" onclick="closeMapModal()">×</div>
+        <div class="modal-box cyber-border" style="height: auto; max-height: 70vh;">
+            <div class="modal-close" onclick="closeMapModal()">X 닫기 X</div>
             <div class="modal-scroll-area">
-                <h2 id="map-modal-title"></h2>
-                <hr style="border-color: var(--theme-dim); margin-bottom: 20px; border-style: dashed;">
-                <div id="map-modal-desc"></div>
-                <div style="height: 20px;"></div>
+                <h2 id="map-modal-title" style="font-size: 2rem; color: red;"></h2>
+                <hr style="border: 3px dashed var(--theme-bright); margin: 20px 0;">
+                <div id="map-modal-desc" style="font-size: 1.2rem; font-weight: bold;"></div>
             </div>
         </div>
     </div>
 
     <div id="char-modal" class="generic-modal" onclick="if(event.target===this) closeCharModal()">
-        <div class="nav-arrow left" id="nav-arrow-left" onclick="prevChar(event)">&#10094;</div>
-        
-        <div class="modal-box cyber-border decor-corners">
-            <div class="modal-close" onclick="closeCharModal()">×</div>
+        <div class="modal-box cyber-border">
+            <div class="modal-close" onclick="closeCharModal()">X 나가기 X</div>
             <div class="modal-scroll-area" id="char-modal-scroll">
-                <div class="m-profile-img-wrap cyber-border" onclick="openImageViewer()">
-                    <img id="md-img" src="" alt="Profile Image">
+                <div class="m-profile-img-wrap" onclick="openImageViewer()">
+                    <img id="md-img" src="" alt="관종 사진">
                 </div>
-                <div class="m-header">
-                    <div class="m-faction" id="md-faction"></div>
+                <div style="text-align: center;">
+                    <div id="md-faction" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 5px;"></div>
                     <div class="m-name" id="md-name"></div>
-                    <div style="margin-top:10px;" id="md-tags"></div>
+                    <div id="md-tags" style="margin-bottom: 20px;"></div>
                 </div>
+                
                 <div class="m-grid">
-                    <div class="m-stat-box cyber-border"><span class="m-label" id="lbl-threat">위험한가요?</span><span class="m-val" id="md-rank"></span></div>
-                    <div class="m-stat-box cyber-border"><span class="m-label" id="lbl-age">진짜 나이</span><span class="m-val" id="md-age"></span></div>
-                    <div class="m-stat-box cyber-border" id="box-mbti"><span class="m-label" id="lbl-mbti">가짜 MBTI</span><span class="m-val" id="md-mbti"></span></div>
-                    <div class="m-stat-box cyber-border" id="box-ennea"><span class="m-label" id="lbl-ennea">에니어그램</span><span class="m-val" id="md-ennea"></span></div>
+                    <div class="m-stat-box cyber-border">💥 등급: <span id="md-rank"></span></div>
+                    <div class="m-stat-box cyber-border">🎂 나이: <span id="md-age"></span></div>
+                    <div class="m-stat-box cyber-border" id="box-mbti">🧪 짭BTI: <span id="md-mbti"></span></div>
                 </div>
-                <div class="m-section" style="margin-bottom: 20px;" id="sec-combat">
-                    <div class="m-section-title" id="lbl-combat">FIGHT_SPEC (싸움 실력)</div>
-                    <div class="m-desc cyber-border">
-                        <span style="color:var(--theme-main); font-weight:bold;" id="lbl-reso">[악기]</span> <span id="md-reso"></span><br>
-                        <span style="color:var(--theme-main); font-weight:bold;" id="lbl-abil">[특기]</span> <span id="md-ability"></span><br>
-                        <span style="color:var(--theme-main); font-weight:bold;" id="lbl-curt">[궁극기]</span> <span id="md-curtain"></span><br>
-                        <span style="color:var(--theme-main); font-weight:bold; margin-top: 5px; display:inline-block;" id="lbl-stat">[컨디션]</span> 조율: <span id="md-tune"></span> / 백스테이지: <span id="md-back"></span> / 오버소울: <span id="md-over"></span>
+                
+                <div id="sec-combat" style="margin-bottom: 20px;">
+                    <div style="font-size: 1.5rem; font-weight: bold; background: red; color: white; padding: 5px; margin-bottom: 10px;">⚔️ 싸움 기술 ⚔️</div>
+                    <div class="m-desc cyber-border" style="padding: 15px;">
+                        [악기] <span id="md-reso"></span><br><br>
+                        [특기] <span id="md-ability"></span><br><br>
+                        [필살기] <span id="md-curtain"></span><br>
                     </div>
                 </div>
-                <div class="m-section">
-                    <div class="m-section-title" id="lbl-record">SECRET_STORY (남들에게 말 못할 비밀)</div>
-                    <div class="m-desc cyber-border" id="md-detail"></div>
+                
+                <div>
+                    <div style="font-size: 1.5rem; font-weight: bold; background: yellow; color: black; padding: 5px; margin-bottom: 10px;">🤫 남몰래 숨긴 흑역사 🤫</div>
+                    <div class="m-desc cyber-border" id="md-detail" style="padding: 15px;"></div>
                 </div>
 
-                <div class="m-section" style="margin-top: 20px;" id="sec-exp">
-                    <div class="m-section-title" id="lbl-exp">표정 변화 📸</div>
-                    <div id="md-expressions" class="m-expressions">
-                        </div>
+                <div id="sec-exp" style="margin-top: 30px;">
+                    <div style="font-size: 1.5rem; font-weight: bold; text-align: center; margin-bottom: 10px;">📸 표정 맛집 📸</div>
+                    <div id="md-expressions" class="m-expressions"></div>
                 </div>
-
-                <div style="height: 30px;"></div>
+                <div style="height: 50px;"></div>
             </div>
         </div>
-
-        <div class="nav-arrow right" id="nav-arrow-right" onclick="nextChar(event)">&#10095;</div>
     </div>
 
     <div id="img-viewer" onclick="closeImageViewer()">
-        <div class="viewer-close">×</div>
         <img id="viewer-img" src="" alt="Full Screen">
     </div>
 
@@ -520,41 +395,36 @@
         let currentTheme = 'theme-pop';
         let isMuted = false;
         
-        let currentFilteredChars = [];
-        let currentCharIndex = 0;
-        
+        // 2초 뒤에 입장 버튼 생성 (원래 로딩바가 뒤로감 ㅋ)
         setTimeout(() => {
             document.getElementById('loading-wrap').style.display = 'none';
             const btnEnter = document.getElementById('btn-enter');
             btnEnter.style.display = 'block';
-            btnEnter.classList.add('view-fade-in');
-        }, 1600);
+        }, 2200);
 
         function startSystem() {
             const intro = document.getElementById('intro');
-            intro.style.animation = 'introEnd 0.6s ease-in-out forwards';
-            intro.style.pointerEvents = 'none'; 
-            setTimeout(() => { intro.style.display = 'none'; }, 600);
+            intro.style.display = 'none';
 
             try {
                 const player = document.getElementById('bgm-player');
-                // 만우절 테마이므로 무조건 eya.mp3로 고정
+                // 만우절 고정곡 eya.mp3
                 if(!player.src || player.src.indexOf('eya.mp3') === -1) {
                     player.src = 'eya.mp3'; 
                 }
                 player.volume = document.getElementById('vol-slider').value / 100;
                 let playPromise = player.play();
                 if (playPromise !== undefined) {
-                    playPromise.catch(error => { console.log("BGM 재생 대기/오류:", error); });
+                    playPromise.catch(error => { console.log("오디오 강제 재생 방어됨:", error); });
                 }
-            } catch(err) { console.log("오디오 오류:", err); }
+            } catch(err) {}
         }
 
         function toggleMute() {
             const player = document.getElementById('bgm-player');
             isMuted = !isMuted;
             player.muted = isMuted;
-            document.getElementById('ctrl-sound').innerHTML = isMuted ? "🔇 조용함" : "🔊 시끄러움";
+            document.getElementById('ctrl-sound').innerHTML = isMuted ? "🔇 너무 조용함" : "🔊 시끄러움";
         }
 
         function updateVolume(val) {
@@ -562,239 +432,82 @@
             player.volume = val / 100;
             document.getElementById('vol-display').innerText = val + "%";
             if(val == 0) {
-                isMuted = true; player.muted = true; document.getElementById('ctrl-sound').innerHTML = "🔇 조용함";
+                isMuted = true; player.muted = true; document.getElementById('ctrl-sound').innerHTML = "🔇 너무 조용함";
             } else {
                 isMuted = false; player.muted = false; document.getElementById('ctrl-sound').innerHTML = "🔊 시끄러움";
             }
         }
 
         function cycleTheme() {
-            if(currentTheme === 'theme-pop') document.getElementById('btn-theme-classic').click();
-            else if(currentTheme === 'theme-classic') document.getElementById('btn-theme-jazz').click();
-            else document.getElementById('btn-theme-pop').click();
+            if(currentTheme === 'theme-pop') setTheme('theme-classic');
+            else if(currentTheme === 'theme-classic') setTheme('theme-jazz');
+            else setTheme('theme-pop');
         }
         
-        const themeTexts = {
-            'theme-classic': {
-                sidebar: ["> 로비 터미널", "> 인물 (흑역사) 명부", "> 전술 상황도", "> 시스템 규정", "> 단말기 설정"],
-                titles: ["DB_WEIRDOS", "TACTICAL_MAP // US", "OS_DATABASE // 설정 열람", "USELESS_SETTINGS"],
-                lobbySub: "OVER SOUL CORE TERMINAL",
-                lobbyBtns: ["흑역사 열람", "전술 지도 확인", "시스템 룰 확인", "단말기 환경 설정"],
-                mapHelp: [
-                    "> 지도 내 <span style='color:var(--neon-red); font-weight:bold; font-size: 0.9rem;'>[ X ]</span> 표식을 선택하여 랜드마크 정보를 확인하십시오.",
-                    "> 각 세력 <span style='color:#fff; font-weight:bold;'>[ 영역 ]</span>을 선택하여 남의 집 사정을 확인하십시오."
-                ],
-                setSubtitle: "[ UI 컨셉 변경 ]",
-                setDesc: "바꿔봤자 노래는 안 바뀝니다. (만우절 ㅋ)",
-                modalLabels: ["위협 등급", "진짜 나이", "성격 유형", "에니어그램", "COMBAT_DATA", "PERSONAL_RECORD", "[공명(Reso)]", "[특기]", "[궁극기]", "[컨디션]", "EXPRESSION_DATA"],
-                systemDB: [
-                    { category: "명령어 (SYSTEM_COMMANDS)", items: [
-                        { name: "!요약", desc: "<span class='highlight'>[기억 조작]</span> 3줄 요약을 시도합니다. 근데 기분 나쁘면 요약 안 해줄 수도 있습니다." },
-                        { name: "!디버그", desc: "<span class='highlight'>[버그 양산]</span> 이미지 오류 시 화면을 물리적으로 쾅쾅 쳐서 고쳐봅니다." },
-                        { name: "!상점", desc: "<span class='highlight'>[합법적 호구 잡기]</span> 비싸게 팔아먹는 공식 상점입니다." },
-                        { name: "!시크릿", desc: "<span class='warning'>[노아의 뒷주머니]</span> 노아가 불법으로 빼돌린 물건을 파는 곳입니다. 사기 당해도 책임 안 집니다." }
-                    ]}
-                ],
-                mapData: {
-                    faction: {
-                        "aster": { title: "세력 정보: 애스터 (ASTER)", desc: "돈 많고 프라이드 높은 부잣집 도련님, 아가씨들 모임. 근데 가주는 꼬맹이." },
-                        "dela": { title: "세력 정보: 델라쿠르아 (DELACRUA)", desc: "다들 겉으론 엄근진한데 속으론 딴 생각하는 델라쿠르아 동네." },
-                        "star": { title: "세력 정보: 스타 더스트 (STARDUST)", desc: "시끄러운 팝 음악 틀고 밤낮없이 춤추는 관종들의 서식지." },
-                        "center": { title: "구역 정보: 절대중립지역", desc: "<span class='highlight'>[절대중립지역]</span> 싸우면 벌금 내야 해서 억지로 친한 척하는 곳." }
-                    },
-                    landmark: {
-                        "aster": { title: "랜드마크: 그랜드 오페라 하우스", desc: "쓸데없이 크고 화려한 엘라라 전용 놀이터." },
-                        "dela": { title: "랜드마크: 침묵의 성채", desc: "시몬이 첼로 켜면 다들 무거워서 바닥에 엎드려야 하는 곳." },
-                        "star": { title: "랜드마크: 일루전 돔", desc: "눈 뽕, 귀 테러가 일상인 사이버 펑크 클럽." },
-                        "center": { title: "랜드마크: 중앙탑 코어 넥서스", desc: "와이파이가 제일 잘 터져서 모이는 곳." }
-                    }
-                }
+        const mapDataDict = {
+            faction: {
+                "aster": { title: "🏰 애스터 (돈지랄)", desc: "가주님이 젤 쪼그마한데 성질은 제일 더러운 부잣집 모임." },
+                "dela": { title: "🎻 델라쿠르아 (꼰대들)", desc: "맨날 회의만 하고 똥군기 잡는 답답한 동네." },
+                "star": { title: "🎤 스타 더스트 (관종)", desc: "내일이 없는 것처럼 클럽에서 놀기만 하는 시끄러운 동네." },
+                "center": { title: "🕊️ 절대중립지역", desc: "싸우다 걸리면 쫓겨나서 뒤에서 몰래 뒷담화 까는 구역." }
             },
-            'theme-jazz': {
-                sidebar: ["> 언더그라운드 펍", "> 녀석들 명부", "> 나와바리 맵", "> 뒷골목 룰", "> 터미널 튜닝"],
-                titles: ["GUYS_INFO", "TURF_MAP // STREETS", "STREET_RULES // 룰 열람", "TERMINAL_TUNING"],
-                lobbySub: "O.S. UNDERGROUND NET",
-                lobbyBtns: ["녀석들 프로필 보기", "나와바리 지도 확인", "이 구역의 룰 확인", "터미널 튜닝하기"],
-                mapHelp: [
-                    "> 지도에 찍힌 <span style='color:var(--neon-red); font-weight:bold; font-size: 0.9rem;'>[ X ]</span> 마크를 눌러봐. 별거 안 나와.",
-                    "> 각 <span style='color:#fff; font-weight:bold;'>[ 영역 ]</span>을 누르면 그 녀석들 약점이나 캐볼 수 있지."
-                ],
-                setSubtitle: "[ 터미널 튜닝 ]",
-                setDesc: "튜닝의 끝은 순정이라지? 어차피 노래는 고정이야.",
-                modalLabels: ["위험도", "호적 나이", "MBTI", "에니어그램", "FIGHT_SPEC", "BACKSTORY", "[울림(Reso)]", "[잔재주]", "[필살기]", "[컨디션]", "EXPRESSION_DATA"],
-                systemDB: [
-                    { category: "명령어 (STREET_COMMANDS)", items: [
-                        { name: "!요약", desc: "<span class='highlight'>[상황 정리]</span> 방금 일어난 일들을 싹 정리해달라고? 귀찮게 구네." },
-                        { name: "!디버그", desc: "<span class='highlight'>[에러 픽스]</span> 기계가 말 안 들으면 때려 부수면 그만이지." },
-                        { name: "!상점", desc: "<span class='highlight'>[합법 거래소]</span> 경찰들 눈치 안 보고 호구들 등쳐먹는 상점이야." },
-                        { name: "!시크릿", desc: "<span class='warning'>[노아의 뒷장사]</span> 노아 그 사이코가 운영하는 불법 암시장. 장기 조심해라." }
-                    ]}
-                ],
-                mapData: {
-                    faction: {
-                        "aster": { title: "세력 정보: 애스터 (ASTER)", desc: "서부를 꽉 쥐고 있는 카르텔. 엘라라가 꼬맹이라고 무시하면 뼈도 못 추려." },
-                        "dela": { title: "세력 정보: 델라쿠르아 (DELACRUA)", desc: "규율 타령하면서 지들끼리 똥군기 잡는 답답한 동네." },
-                        "star": { title: "세력 정보: 스타 더스트 (STARDUST)", desc: "동북부에 처박혀서 밤새 스피커 찢어지게 음악 트는 소음 공해 구역." },
-                        "center": { title: "구역 정보: 절대중립지역", desc: "<span class='highlight'>[절대중립지역]</span> 싸우다 걸리면 다구리 맞는 곳이라 억지로 웃고 다니는 구역이야." }
-                    },
-                    landmark: {
-                        "aster": { title: "랜드마크: 그랜드 오페라 하우스", desc: "애스터 녀석들의 본진. 평소엔 쓸데없이 파티나 하고 앉았지." },
-                        "dela": { title: "랜드마크: 침묵의 성채", desc: "델라쿠르아의 방어벽. 시몬 첼로 소리 들리면 걍 바닥에 엎어져 있는 게 속 편해." },
-                        "star": { title: "랜드마크: 일루전 돔", desc: "눈 아픈 네온사인 켜놓고 시끄러운 비트가 터져 나오는 마경." },
-                        "center": { title: "랜드마크: 중앙탑 코어 넥서스", desc: "온갖 녀석들이 모여서 정보도 교환하고 친목질도 하는 아지트." }
-                    }
-                }
-            },
-            'theme-pop': {
-                sidebar: ["> 메인 스테이지", "> 흑역사 프로필", "> 투어 맵", "> 세계관 가이드", "> 스킨 꾸미기"],
-                titles: ["WEIRDO_PROFILES", "TOUR_MAP // HOT", "UNIVERSE_GUIDE // 룰북", "USELESS_SETTINGS"],
-                lobbySub: "O.S. STAGE NETWORK ✨",
-                lobbyBtns: ["흑역사 프로필 보기 🎤", "스테이지 맵 투어 🗺️", "쓸데없는 가이드 체크 ⚙️", "터미널 스킨 꾸미기 🎨"],
-                mapHelp: [
-                    "> 맵의 <span style='color:var(--neon-red); font-weight:bold; font-size: 0.9rem;'>[ X ]</span> 픽을 터치해서 핫플을 확인해봐요! (안 핫함)",
-                    "> 각 <span style='color:#fff; font-weight:bold;'>[ 영역 ]</span>을 터치하면 남의 집 싸움 구경을 할 수 있어요!"
-                ],
-                setSubtitle: "[ UI SKIN SETTINGS 💖 ]",
-                setDesc: "터미널 스킨을 맘대로 픽해봐요! (참고로 노래는 eya 하나뿐! 😛)",
-                modalLabels: ["위험한가요?", "진짜 나이", "가짜 MBTI", "에니어그램", "FIGHT_SPEC", "SECRET_STORY", "[악기]", "[특기]", "[궁극기]", "[컨디션]", "표정 변화 📸"],
-                systemDB: [
-                    { category: "명령어 (SPECIAL_COMMANDS)", items: [
-                        { name: "!요약", desc: "<span class='highlight'>[스토리 요약]</span> 기억력 나쁜 여러분을 위한 세 줄 요약! (가끔 뻥침) ✨" },
-                        { name: "!디버그", desc: "<span class='highlight'>[오류 팡팡]</span> 렉 걸리면 누르세요. 터미널이 화내면서 고쳐줍니다! 🛠️" },
-                        { name: "!상점", desc: "<span class='highlight'>[오피셜 굿즈샵]</span> 비싼 돈 주고 쓰레기... 아니 예쁜 아이템을 사는 곳! 🛍️" },
-                        { name: "!시크릿", desc: "<span class='warning'>[쉿! 비밀상점]</span> 노아가 남몰래 운영하는 마켓! 샀다가 감옥 가도 몰라요! 🤫" }
-                    ]}
-                ],
-                mapData: {
-                    faction: {
-                        "aster": { title: "크루 정보: 애스터 (ASTER)", desc: "가주님이 제일 쪼그마한데 성질은 제일 더러운 크루! 🌟" },
-                        "dela": { title: "크루 정보: 델라쿠르아 (DELACRUA)", desc: "맨날 회의만 하고 결론은 안 내는 진지충 크루! 🎻" },
-                        "star": { title: "크루 정보: 스타 더스트 (STARDUST)", desc: "내일이 없는 것처럼 클럽에서 놀기만 하는 크루! 🎤💖" },
-                        "center": { title: "구역 정보: 절대중립지역", desc: "<span class='highlight'>[절대중립지역]</span> 싸우다 걸리면 쫓겨나는 평화구역! 그래서 뒤에서 몰래 욕함!" }
-                    },
-                    landmark: {
-                        "aster": { title: "핫플: 그랜드 오페라 하우스", desc: "쓸데없이 금칠을 해놔서 눈이 부신 오페라 극장! 🥂" },
-                        "dela": { title: "핫플: 침묵의 성채", desc: "숨만 쉬어도 눈치 주는 무서운 요새! 🏰" },
-                        "star": { title: "핫플: 일루전 돔", desc: "방음이 1도 안 돼서 민원 터져나가는 클럽 돔! 🎉" },
-                        "center": { title: "핫플: 중앙탑 코어 넥서스", desc: "데이터 공짜라서 다들 핸드폰만 보고 있는 광장! 🎉" }
-                    }
-                }
+            landmark: {
+                "aster": { title: "💸 그랜드 오페라 하우스", desc: "쓸데없이 금칠을 해놔서 눈이 부신 오페라 극장." },
+                "dela": { title: "🗿 침묵의 성채", desc: "숨만 쉬어도 눈치 주는 무서운 요새." },
+                "star": { title: "🪩 일루전 돔", desc: "방음 1도 안 돼서 민원 터져나가는 사이버펑크 클럽." },
+                "center": { title: "📶 중앙탑 코어 넥서스", desc: "와이파이 공짜라서 다들 핸드폰만 보고 있는 광장." }
             }
         };
 
-        const charDB = [
-            { type: "main", code: "c", img: "https://igx.kr/u/tR/c/1", name: "엘라라(가주)", faction: "애스터", rank: "SS", age: 52, mbti: "ENTP", ennea: "8w7", tags: ["보수파", "메스가키", "실제키140대"], reso: "지휘", ability: "지휘를 빙자한 염력 패기", curtain: "나 건들면 다 죽어", tune: "가능", back: "가능", over: "경험함", detail: "나이가 52세인데 합법 로리... 아니 외모가 멈췄다. 성격은 더러운 메스가키 츤데레이며 항상 깔창을 애용한다는 소문이 있다. 딸 루나 앞에서는 한없이 약해진다." },
-            { type: "main", code: "d", img: "https://igx.kr/u/tR/d/1", name: "루나", faction: "애스터", rank: "A", age: 24, mbti: "INFJ", ennea: "9w1", tags: ["후계자", "진보파", "엄마보다큼"], reso: "지휘 (열화판)", ability: "엄마 따라하기 (근데 잘 안 됨)", curtain: "힐링캠프 (미완성)", tune: "불가", back: "불가", over: "미경험", detail: "가주 엘라라의 친딸. 키나 몸매는 이미 엄마를 한참 뛰어넘었지만 능력치에서 밀려 맨날 열등감을 느낀다. 조용한 성격에 속으론 '엄마 왜 저래' 하고 생각할지도 모른다." },
-            { type: "main", code: "g", img: "https://igx.kr/u/tR/g/1", name: "루시", faction: "애스터", rank: "S", age: 23, mbti: "ESFP", ennea: "3w4", tags: ["애리나 소속", "나르시스트", "피아노파괴범"], reso: "피아노", ability: "건반 치다 빡치면 다 박살냄", curtain: "광기의 속주", tune: "불가 (자동회복 패시브)", back: "가능", over: "미경험", detail: "연주하다 지 혼자 흥분해서 피아노를 자주 박살 낸다. 레조넌스가 폭주해서 죽을 뻔하는 걸 자동 조율 패시브로 버티는 좀비 같은 여자. 자뻑이 매우 심함." },
-            { type: "main", code: "h", img: "https://igx.kr/u/tR/h/1", name: "시몬(가주)", faction: "델라쿠르아", rank: "S", age: 60, mbti: "ISTJ", ennea: "1w9", tags: ["보수파", "과묵함", "첼로할망구"], reso: "첼로", ability: "중력 프레스 (갑질 최적화)", curtain: "[절대 엎드려뻗쳐]", tune: "가능", back: "가능", over: "경험함", detail: "델라쿠르아의 꼰대... 아니 엄격한 가주님. 첼로 한 번 켜면 다들 중력에 짓눌려 강제 절을 하게 된다. 남편 잃은 슬픔을 숨기고 겉으론 아주 쿨한 척 한다." },
-            { type: "main", code: "w", img: "https://igx.kr/u/tR/w/1", name: "사라", faction: "델라쿠르아", rank: "B+", age: 20, mbti: "ISFJ", ennea: "6w5", tags: ["후계자", "과묵함", "엄마눈치봄"], reso: "바이올린", ability: "보이지 않는 죽빵", curtain: "[원격 뺨때리기]", tune: "불가", back: "불가", over: "미경험", detail: "시몬의 딸. 엄마 닮아서 조용하고 무뚝뚝하다. 바이올린 켜면서 우아한 척 염력으로 적을 줘팬다." },
-            { type: "main", code: "j", img: "https://igx.kr/u/tR/j/1", name: "시안", faction: "델라쿠르아", rank: "E", age: 20, mbti: "ISFJ", ennea: "2w1", tags: ["메이드", "브라콘", "가슴골지갑"], reso: "오르골", ability: "1m 레이더 (거의 쓸모없음)", curtain: "오르골 틀고 단체 최면", tune: "불가", back: "불가", over: "미경험", detail: "시각장애가 있지만 동생 송을 끔찍하게 아끼는 브라콘 누나. 가슴골에 항상 동생 줄 간식이나 지갑을 쑤셔 넣고 다닌다. 전투력은 솔직히 동네 꼬마 수준." },
-            { type: "main", code: "k", img: "https://igx.kr/u/tR/k/1", name: "송", faction: "델라쿠르아", rank: "B", age: 20, mbti: "ENFP", ennea: "7w6", tags: ["메이드", "오토코노코", "립싱크의심"], reso: "클라리넷", ability: "광역 버프 (본인도 모름)", curtain: "[환희의 립싱크]", tune: "가능", back: "불가", over: "미경험", detail: "시안의 쌍둥이 남동생인데 여장하고 다닌다(오토코노코). 청각장애라 본인 악기 소리도 못 듣는데 그냥 해맑게 분다. 누나가 다 키워줬는데 본인은 잘 모름." },
-            { type: "main", code: "l", img: "https://igx.kr/u/tR/l/1", name: "세라피나(가주)", faction: "스타 더스트", rank: "S", age: 32, mbti: "ENFJ", ennea: "3w2", tags: ["진보파", "활발", "K팝전도사"], reso: "K-Pop", ability: "강제 댄스타임 (심박수 조작)", curtain: "[강제 떼창 콘서트]", tune: "가능", back: "가능", over: "경험함", detail: "적들 심박수를 억지로 K팝 비트에 맞춰 펌핑시켜 터뜨리는 무서운 누님. 언제나 텐션이 높아서 주변 사람들이 기빨려 함." },
-            { type: "main", code: "r", img: "https://igx.kr/u/tR/r/1", name: "클로에", faction: "스타 더스트", rank: "A", age: 21, mbti: "INTP", ennea: "5w4", tags: ["진보파", "기계덕후", "오토튠충"], reso: "Pop", ability: "오토튠 (목소리 변조 아님. 물리 변조)", curtain: "[빌보드 차트 1위의 횡포]", tune: "불가", back: "가능", over: "미경험", detail: "팝 음악에 심취한 해커 기질의 연주자. 오토튠을 물리 엔진에다 박아버려서 총알이 휘어지게 만드는 기행을 벌임." },
-            { type: "main", code: "m", img: "https://igx.kr/u/tR/m/1", name: "노아", faction: "무소속", rank: "S", age: 23, mbti: "ESTP", ennea: "8w7", tags: ["사이코패스", "마약상", "불법장사꾼"], reso: "백색소음", ability: "ASMR인 줄 알았지? (고막 파괴)", curtain: "노이즈 캔슬링의 악몽", tune: "불가", back: "불가", over: "미경험", detail: "뒷골목에서 위험한 약(lo-fi) 팔면서 낄낄거리는 사이코패스. 백색소음 튼다고 수면 유도해놓고 고막을 터뜨려버리는 악질 중의 악질." },
-            { type: "main", code: "n", img: "https://igx.kr/u/tR/n/1", name: "아리아", faction: "무소속", rank: "A", age: 27, mbti: "ISFJ", ennea: "2w1", tags: ["수녀", "자기희생", "호구"], reso: "하프", ability: "호구의 힐링 (내 살 깎아먹기)", curtain: "단체 부활 (근데 내가 죽음)", tune: "가능", back: "불가", over: "미경험", detail: "남들 치료해주다가 자기 레조넌스가 다 꼬여버린 답답할 정도로 착한 수녀. 오라클이 호구 잡고 스폰서 노릇 하는 줄도 모르고 봉사만 함." },
-            { type: "main", code: "q", img: "https://igx.kr/u/tR/q/1", name: "세라", faction: "무소속", rank: "E", age: 35, mbti: "ESTJ", ennea: "3w2", tags: ["아저씨아님", "알콜중독", "컴맹탈출"], reso: "EMD", ability: "컴퓨터 만질 때만 쎄짐", curtain: "주변 폰 다 해킹함", tune: "불가", back: "불가", over: "미경험", detail: "잘 나가던 세일즈맨이었으나 쫄딱 망하고 매일 술에 쩔어 사는 여자. 피시방이나 컴퓨터 앞에 앉혀두면 갑자기 눈빛이 변함." },
-            { type: "main", code: "z", img: "https://igx.kr/u/tR/z/1", name: "오라클", faction: "무소속", rank: "A+", age: 29, mbti: "INFJ", ennea: "1w2", tags: ["사이비교주", "눈먼자", "니힐광팬"], reso: "초음파", ability: "돌고래 소리로 세뇌하기", curtain: "[다 조용히 해!]", tune: "가능", back: "가능", over: "미경험", detail: "니힐을 신처럼 모시는 사이비 교주. 초음파로 사람들 뇌파 건드려서 신도들 돈 뜯어내는 게 주특기. 아리아한테 은근히 돈 대주고 있음." },
-            { type: "main", code: "y", img: "https://igx.kr/u/tR/y/1", name: "니힐", faction: "무소속", rank: "UNKNOWN", age: "불명", mbti: "INTP", ennea: "9w8", tags: ["걸어다니는재앙", "낮잠왕", "귀찮음"], reso: "절대 침묵", ability: "존재감 삭제", curtain: "귀찮아서 안 씀 (진짜임)", tune: "자유자재", back: "자유자재", over: "상시", detail: "옆에만 가도 와이파이, 소리, 능력 싹 다 끊기게 만드는 인간 EMP. 본인은 세상만사 귀찮고 낮잠 잘 곳만 찾아 돌아다님." },
-            
-            { type: "extra", name: "동네 아재 (남)", faction: "무소속", rank: "E", age: "불명", img: "https://igx.kr/u/tR/B/1", tags: ["엑스트라", "일반인"], detail: "그냥 지나가다 싸움에 휘말리는 불쌍한 아재." },
-            { type: "extra", name: "동네 이모 (여)", faction: "무소속", rank: "E", age: "불명", img: "https://igx.kr/u/tR/B/2", tags: ["엑스트라", "일반인"], detail: "시장 갔다가 돌아오는 길에 갑자기 능력이 터져서 놀란 이모." },
-            { type: "extra", name: "흔한 직장인 (남)", faction: "무소속", rank: "E", age: "불명", img: "https://igx.kr/u/tR/B/3", tags: ["엑스트라", "일반인"], detail: "오늘도 야근하고 피곤해 죽겠는데 능력자들이 길막해서 빡친 직장인." },
-            { type: "extra", name: "흔한 알바생 (여)", faction: "무소속", rank: "E", age: "불명", img: "https://igx.kr/u/tR/B/4", tags: ["엑스트라", "일반인"], detail: "시급 1만 원 받고 일하는데 가게 박살 나서 울고 있는 알바생." },
-            { type: "extra", name: "월급루팡 경찰 (남)", faction: "무소속", rank: "D", age: "불명", img: "https://igx.kr/u/tR/B/11", tags: ["엑스트라", "경찰"], detail: "괴물들 나타나면 일단 뒤로 숨고 보는 치안 유지군." },
-            { type: "extra", name: "FM 경찰 (여)", faction: "무소속", rank: "D", age: "불명", img: "https://igx.kr/u/tR/B/12", tags: ["엑스트라", "경찰"], detail: "규칙대로 하려다가 매번 털리는 융통성 없는 경찰." },
-            
-            { type: "extra", name: "허세 귀족 (남)", faction: "애스터", rank: "E", age: "불명", img: "https://igx.kr/u/tR/B/5", tags: ["엑스트라", "돈지랄"], detail: "돈으로 능력 사보려다 사기당한 애스터의 귀족." },
-            { type: "extra", name: "된장녀 (여)", faction: "애스터", rank: "E", age: "불명", img: "https://igx.kr/u/tR/B/6", tags: ["엑스트라", "명품자랑"], detail: "비싼 옷 입고 클래식 듣다가 괴물 나타나면 구두 벗고 제일 먼저 뜀." },
-            
-            { type: "extra", name: "돈 많은 졸부 (남)", faction: "델라쿠르아", rank: "E", age: "불명", img: "https://igx.kr/u/tR/B/7", tags: ["엑스트라", "재력가"], detail: "돈으로 다 해결하려다가 시몬한테 털린 아저씨." },
-            { type: "extra", name: "클럽 단골 (여)", faction: "델라쿠르아", rank: "E", age: "불명", img: "https://igx.kr/u/tR/B/8", tags: ["엑스트라", "재즈빠"], detail: "밤마다 재즈 라운지에서 칵테일 마시며 분위기 잡는 누님." },
-            
-            { type: "extra", name: "따봉충 (남)", faction: "스타 더스트", rank: "E", age: "불명", img: "https://igx.kr/u/tR/B/9", tags: ["엑스트라", "관종"], detail: "괴물 나타났는데 도망 안 가고 셀카 찍어 올리는 관종." },
-            { type: "extra", name: "인스타 여신 (여)", faction: "스타 더스트", rank: "E", age: "불명", img: "https://igx.kr/u/tR/B/10", tags: ["엑스트라", "인플루언서"], detail: "마법 같은 거 터질 때마다 배경으로 삼아 인스타에 릴스 올림." }
+        const systemDB = [
+            { category: "💻 명령어 (아무 말 대잔치)", items: [
+                { name: "!요약", desc: "기억력 나쁜 당신을 위한 3줄 요약 (가끔 구라 침)." },
+                { name: "!디버그", desc: "에러 나면 화면 쾅쾅 쳐서 물리적으로 고쳐주는 기능." },
+                { name: "!상점", desc: "비싼 돈 주고 호구 당하는 오피셜 굿즈샵." },
+                { name: "!시크릿", desc: "노아가 몰래 굴리는 불법 시장. 샀다가 깜빵 가도 모름." }
+            ]}
         ];
 
-        const preloadedImages = [];
-        charDB.forEach(char => {
-            if(char.img) { 
-                const img = new Image(); img.src = char.img; preloadedImages.push(img); 
-            }
-            if(char.code) {
-                const expNums = [24, 15, 8, 26];
-                expNums.forEach(num => {
-                    const expImg = new Image(); 
-                    expImg.src = `https://igx.kr/u/tR/${char.code}/${num}`; 
-                    preloadedImages.push(expImg);
-                });
-            }
-        });
+        const charDB = [
+            { type: "main", code: "c", img: "https://igx.kr/u/tR/c/1", name: "엘라라(초딩아님)", faction: "애스터", rank: "SS", age: 52, mbti: "ENTP", tags: ["메스가키", "실제키140대"], reso: "지휘", ability: "염력 패기", curtain: "나 건들면 다 죽어", detail: "나이가 52세인데 합법 로리... 성격은 더러운 츤데레에 깔창 애호가. 딸 앞에서는 호구 됨." },
+            { type: "main", code: "d", img: "https://igx.kr/u/tR/d/1", name: "루나", faction: "애스터", rank: "A", age: 24, mbti: "INFJ", tags: ["후계자", "엄마보다큼"], reso: "지휘 (짭)", ability: "엄마 따라하기 (실패)", curtain: "힐링캠프 (미완성)", detail: "가주 친딸. 키나 몸매는 엄마를 한참 넘었지만 능력 딸려서 맨날 쭈구리 모드. 속으론 '엄마 왜 저래' 할 듯." },
+            { type: "main", code: "g", img: "https://igx.kr/u/tR/g/1", name: "루시", faction: "애스터", rank: "S", age: 23, mbti: "ESFP", tags: ["나르시스트", "피아노브레이커"], reso: "피아노", ability: "빡치면 다 박살냄", curtain: "광기의 속주", detail: "연주하다 지 혼자 삘받아서 피아노 맨날 부숨. 수리비 감당 안 돼서 맨날 빚쟁이한테 쫓길 듯." },
+            { type: "main", code: "h", img: "https://igx.kr/u/tR/h/1", name: "시몬(가주)", faction: "델라쿠르아", rank: "S", age: 60, mbti: "ISTJ", tags: ["꼰대", "첼로할망구"], reso: "첼로", ability: "갑질 최적화 (중력)", curtain: "[절대 엎드려뻗쳐]", detail: "델라쿠르아의 최고 존엄 꼰대. 첼로 한 번 켜면 다들 중력에 눌려서 강제 큰절해야 됨." },
+            { type: "main", code: "w", img: "https://igx.kr/u/tR/w/1", name: "사라", faction: "델라쿠르아", rank: "B+", age: 20, mbti: "ISFJ", tags: ["후계자", "엄마눈치봄"], reso: "바이올린", ability: "보이지 않는 죽빵", curtain: "[원격 뺨때리기]", detail: "시몬의 딸. 엄마 닮아 융통성 없음. 우아한 척 바이올린 켜면서 염력으로 적들 줘팸." },
+            { type: "main", code: "j", img: "https://igx.kr/u/tR/j/1", name: "시안", faction: "델라쿠르아", rank: "E", age: 20, mbti: "ISFJ", tags: ["브라콘", "가슴골지갑"], reso: "오르골", ability: "1m 레이더 (노쓸모)", curtain: "단체 최면 (약함)", detail: "시각장애 있는데 가슴골에 항상 동생 간식이랑 지갑 쑤셔넣고 다님. 전투력은 동네 초딩 수준." },
+            { type: "main", code: "k", img: "https://igx.kr/u/tR/k/1", name: "송", faction: "델라쿠르아", rank: "B", age: 20, mbti: "ENFP", tags: ["오토코노코", "립싱크논란"], reso: "클라리넷", ability: "광역 버프 (자기도모름)", curtain: "[환희의 립싱크]", detail: "시안 동생. 남자인데 여장함. 청각장애라 지 악기 소리 못 듣는데 걍 해맑게 붊. 립싱크 의혹 있음." },
+            { type: "main", code: "l", img: "https://igx.kr/u/tR/l/1", name: "세라피나(가주)", faction: "스타 더스트", rank: "S", age: 32, mbti: "ENFJ", tags: ["K팝전도사", "기빨림"], reso: "K-Pop", ability: "강제 댄스타임", curtain: "[강제 떼창 콘서트]", detail: "적들 심박수 K팝 비트에 맞춰 터뜨리는 무서운 누나. 텐션 너무 높아서 다들 기 빨려 함." },
+            { type: "main", code: "r", img: "https://igx.kr/u/tR/r/1", name: "클로에", faction: "스타 더스트", rank: "A", age: 21, mbti: "INTP", tags: ["기계덕후", "오토튠충"], reso: "Pop", ability: "물리엔진 오토튠", curtain: "[빌보드 1위의 횡포]", detail: "오토튠을 현실에 적용시켜서 총알을 휘어지게 만드는 기행을 벌임. 노래방 가면 무조건 오토튠 켬." },
+            { type: "main", code: "m", img: "https://igx.kr/u/tR/m/1", name: "노아", faction: "무소속", rank: "S", age: 23, mbti: "ESTP", tags: ["사이코패스", "마약상"], reso: "백색소음", ability: "고막 파괴 ASMR", curtain: "노이즈 캔슬링의 악몽", detail: "약 팔면서 낄낄거리는 사이코. 수면 유도 ASMR인 줄 알고 들었다가 고막 다 터짐." },
+            { type: "main", code: "n", img: "https://igx.kr/u/tR/n/1", name: "아리아", faction: "무소속", rank: "A", age: 27, mbti: "ISFJ", tags: ["호구수녀", "생명력증발"], reso: "하프", ability: "내 살 깎아서 힐링", curtain: "단체 부활 (근데 내가 죽음)", detail: "남들 힐 주다가 자기 몸 다 망가진 호구 중의 상호구 수녀. 오라클이 뒷돈 대주는지도 모름." },
+            { type: "main", code: "q", img: "https://igx.kr/u/tR/q/1", name: "세라", faction: "무소속", rank: "E", age: 35, mbti: "ESTJ", tags: ["알콜중독", "컴맹탈출"], reso: "EMD", ability: "컴퓨터 만질 때만 쎄짐", curtain: "주변 폰 다 해킹", detail: "잘 나가다 쫄딱 망하고 술만 마시는 백수. 피시방 가면 갑자기 텐션 오르며 눈빛 변함." },
+            { type: "main", code: "z", img: "https://igx.kr/u/tR/z/1", name: "오라클", faction: "무소속", rank: "A+", age: 29, mbti: "INFJ", tags: ["사이비교주", "초음파빌런"], reso: "초음파", ability: "돌고래 세뇌", curtain: "[다 조용히 해!]", detail: "니힐을 신처럼 빠는 사이비 교주. 돌고래 소리로 신도들 세뇌해서 돈 뜯어냄." },
+            { type: "main", code: "y", img: "https://igx.kr/u/tR/y/1", name: "니힐", faction: "무소속", rank: "UNKNOWN", age: "불명", mbti: "INTP", tags: ["낮잠왕", "와이파이도둑"], reso: "절대 침묵", ability: "존재감 삭제", curtain: "귀찮아서 안 씀", detail: "옆에 가면 와이파이, 소리 다 먹통 되는 걸어 다니는 EMP. 본인은 걍 귀찮아서 잠만 잠." },
+            
+            { type: "extra", name: "불쌍한 아재", faction: "무소속", rank: "E", age: "불명", img: "https://igx.kr/u/tR/B/1", tags: ["일반인", "퇴근마려움"], detail: "싸움에 휘말려 컵라면 엎은 아재." },
+            { type: "extra", name: "빡친 알바생", faction: "무소속", rank: "E", age: "불명", img: "https://igx.kr/u/tR/B/4", tags: ["일반인", "시급만원"], detail: "능력자들 싸움 때문에 편의점 부서져서 펑펑 우는 알바생." },
+            { type: "extra", name: "따봉충 관종", faction: "스타 더스트", rank: "E", age: "불명", img: "https://igx.kr/u/tR/B/9", tags: ["관종", "인스타업로드"], detail: "건물 무너지는데 그 앞에서 틱톡 찍고 있는 미친놈." }
+        ];
 
         function toggleMenu() { document.getElementById('sidebar').classList.toggle('open'); }
         function navTo(viewId) {
-            document.querySelectorAll('#main-content > div').forEach(el => { el.style.display = 'none'; el.classList.remove('view-fade-in'); });
+            document.querySelectorAll('#main-content > div').forEach(el => { el.style.display = 'none'; });
             const target = document.getElementById(viewId + '-view');
-            if(target) { target.style.display = (viewId === 'lobby') ? 'flex' : 'block'; void target.offsetWidth; target.classList.add('view-fade-in'); }
+            if(target) { target.style.display = 'block'; }
+            if(viewId === 'lobby') target.style.display = 'flex';
             document.getElementById('sidebar').classList.remove('open');
-            document.querySelectorAll('.menu-item').forEach(el => el.classList.remove('active-menu'));
-            const activeNav = document.getElementById('nav-' + viewId);
-            if(activeNav) activeNav.classList.add('active-menu');
             window.scrollTo(0, 0);
         }
 
-        function setTheme(themeClass, btn, audioSrc) {
+        function setTheme(themeClass) {
             document.body.className = ''; 
             document.body.classList.add(themeClass);
             document.querySelectorAll('.settings-btn').forEach(b => b.classList.remove('active-theme'));
-            if(btn) btn.classList.add('active-theme');
+            event.currentTarget.classList.add('active-theme');
             currentTheme = themeClass;
 
-            const tData = themeTexts[themeClass];
-            
-            document.getElementById('nav-lobby').innerText = tData.sidebar[0];
-            document.getElementById('nav-character').innerText = tData.sidebar[1];
-            document.getElementById('nav-map').innerText = tData.sidebar[2];
-            document.getElementById('nav-system').innerText = tData.sidebar[3];
-            document.getElementById('nav-settings').innerText = tData.sidebar[4];
-
-            document.getElementById('title-char').innerHTML = tData.titles[0] + ' <div class="view-title-decor"></div>';
-            document.getElementById('title-map').innerHTML = tData.titles[1] + ' <div class="view-title-decor"></div>';
-            document.getElementById('title-sys').innerHTML = tData.titles[2] + ' <div class="view-title-decor"></div>';
-            document.getElementById('title-set').innerHTML = tData.titles[3] + ' <div class="view-title-decor"></div>';
-
-            document.getElementById('lobby-sub-title').innerText = tData.lobbySub;
-            document.getElementById('btn-txt-char').innerText = tData.lobbyBtns[0];
-            document.getElementById('btn-txt-map').innerText = tData.lobbyBtns[1];
-            document.getElementById('btn-txt-sys').innerText = tData.lobbyBtns[2];
-            document.getElementById('btn-txt-set').innerText = tData.lobbyBtns[3];
-
-            document.getElementById('map-help-1').innerHTML = tData.mapHelp[0];
-            document.getElementById('map-help-2').innerHTML = tData.mapHelp[1];
-            document.getElementById('set-subtitle').innerText = tData.setSubtitle;
-            document.getElementById('setting-desc').innerText = tData.setDesc;
-
-            document.getElementById('lbl-threat').innerText = tData.modalLabels[0];
-            document.getElementById('lbl-age').innerText = tData.modalLabels[1];
-            document.getElementById('lbl-mbti').innerText = tData.modalLabels[2];
-            document.getElementById('lbl-ennea').innerText = tData.modalLabels[3];
-            document.getElementById('lbl-combat').innerText = tData.modalLabels[4];
-            document.getElementById('lbl-record').innerText = tData.modalLabels[5];
-            document.getElementById('lbl-reso').innerText = tData.modalLabels[6];
-            document.getElementById('lbl-abil').innerText = tData.modalLabels[7];
-            document.getElementById('lbl-curt').innerText = tData.modalLabels[8];
-            document.getElementById('lbl-stat').innerText = tData.modalLabels[9];
-            document.getElementById('lbl-exp').innerText = tData.modalLabels[10]; 
-
-            renderSystemDB(tData.systemDB);
-
-            if(audioSrc) {
-                const player = document.getElementById('bgm-player');
-                const currentSrcFile = player.src.split('/').pop();
-                if(currentSrcFile !== audioSrc) {
-                    player.src = audioSrc;
-                    player.play().catch(e => console.log("BGM 재생 대기 (사용자 클릭 필요):", e));
-                }
-            }
+            // 메뉴명 등 장난기 가득하게 변경 (귀찮아서 통일)
+            renderSystemDB(systemDB);
         }
 
         function renderSystemDB(dbData) {
@@ -803,7 +516,7 @@
 
             dbData.forEach(folderData => {
                 const folder = document.createElement('div');
-                folder.className = 'db-folder cyber-border decor-corners'; folder.innerHTML = folderData.category;
+                folder.className = 'db-folder cyber-border'; folder.innerHTML = folderData.category;
                 const folderContent = document.createElement('div');
                 folderContent.className = 'db-folder-content';
 
@@ -816,89 +529,59 @@
                     file.onclick = function() {
                         const isVis = dataBox.classList.contains('show');
                         folderContent.querySelectorAll('.db-data-box').forEach(b => b.classList.remove('show'));
-                        folderContent.querySelectorAll('.db-file').forEach(f => f.classList.remove('active'));
-                        if(!isVis) { dataBox.classList.add('show'); file.classList.add('active'); }
+                        if(!isVis) dataBox.classList.add('show');
                     };
                     folderContent.appendChild(file); folderContent.appendChild(dataBox);
                 });
 
                 folder.onclick = function() {
-                    const isOp = folder.classList.contains('open');
-                    document.querySelectorAll('.db-folder').forEach(f => f.classList.remove('open'));
+                    const isOp = folderContent.classList.contains('show');
                     document.querySelectorAll('.db-folder-content').forEach(fc => fc.classList.remove('show'));
-                    if(!isOp) { folder.classList.add('open'); folderContent.classList.add('show'); }
+                    if(!isOp) folderContent.classList.add('show');
                 };
                 dbContainer.appendChild(folder); dbContainer.appendChild(folderContent);
             });
         }
 
-        // 만우절용 웃긴 속보 리스트
         const newsItems = [
-            "애스터 가주 엘라라, 몰래 우유 3리터 원샷하다 들켜... '키 크고 싶었다'",
-            "노아, 길 가다 바나나 껍질 밟고 뇌진탕... 마약 바닥에 다 쏟아",
+            "애스터 엘라라, 우유 3리터 원샷하다 들켜... '키 크고 싶었다'",
+            "노아, 바나나 껍질 밟고 뇌진탕... 마약 바닥에 다 쏟아",
             "니힐, 연속 수면 48시간 돌파... 옆 건물 무너져도 안 깸",
-            "델라쿠르아 시몬, 첼로 대신 일렉기타 치다 줄 끊어져 당황",
-            "스타 더스트 일루전 돔, 전기세 미납으로 내일 강제 단전 위기",
-            "오라클, 오늘 점심 메뉴 예언 틀려서 신도들 대거 탈퇴 사태",
-            "루시, 연주회 중 빡쳐서 피아노 박살... 수리비 청구서 보고 오열",
-            "송, 사실 클라리넷 불 줄 모름... 10년째 립싱크 논란 일어",
-            "하프 수녀 아리아, 보이스피싱 당해 교단 헌금 날릴 뻔...",
-            "세라, 피시방에서 컵라면 먹다 마우스에 국물 쏟아 오버소울 각성 실패",
-            "치안 유지군, 괴물 나타나자마자 화장실 핑계로 전원 도주",
-            "클로에, 오토튠으로 자기 노래방 점수 100점 주작하다 적발"
+            "델라쿠르아 시몬, 일렉기타 치다 줄 끊어져 당황",
+            "스타 더스트 일루전 돔, 전기세 미납으로 단전 위기",
+            "오라클, 점심 메뉴 예언 틀려서 신도들 탈퇴 사태",
+            "루시, 빡쳐서 피아노 박살... 수리비 청구서 보고 오열",
+            "송, 10년째 립싱크 논란... 클라리넷 불 줄 모름",
+            "아리아 수녀, 보이스피싱 당해 헌금 싹 날려",
+            "치안 유지군, 괴물 나타나자 화장실 핑계로 전원 도주"
         ];
         function updateNews() {
-            const labels = ["[ 헛 소 리 ]", "[ 믿 거 나 ]", "[ 말 거 나 ]", "[ 뇌 피 셜 ]"];
-            document.getElementById('news-label').innerText = labels[Math.floor(Math.random() * labels.length)];
-
-            let shuffled = newsItems.sort(() => 0.5 - Math.random()).slice(0, 8);
+            let shuffled = newsItems.sort(() => 0.5 - Math.random()).slice(0, 5);
             let newsHTML = ""; shuffled.forEach(news => { newsHTML += `<span>${news}</span>`; });
             document.getElementById('news-ticker').innerHTML = newsHTML;
         }
-        updateNews(); setInterval(updateNews, 40000); 
-
-        function getFactionColor(faction) {
-            if(faction === "애스터") return "var(--color-aster)";
-            if(faction === "델라쿠르아") return "var(--color-dela)";
-            if(faction === "스타 더스트") return "var(--color-star)";
-            return "var(--theme-main)"; 
-        }
+        updateNews(); setInterval(updateNews, 15000); 
 
         function renderCharacters(filter) {
             const container = document.getElementById('char-container');
             container.innerHTML = ''; 
             currentFilteredChars = []; 
             
-            let delayTime = 0;
             charDB.forEach((char, i) => {
                 let isMatch = false;
-                
-                if (filter === 'ALL') {
-                    isMatch = true;
-                } else if (filter === 'EXTRA') {
-                    isMatch = (char.type === 'extra');
-                } else if (char.faction === filter) {
-                    isMatch = true; 
-                }
+                if (filter === 'ALL') isMatch = true;
+                else if (filter === 'EXTRA' && char.type === 'extra') isMatch = true;
+                else if (char.faction === filter) isMatch = true; 
 
                 if (isMatch) {
                     currentFilteredChars.push(i); 
-                    
-                    let rColor = char.rank === 'UNKNOWN' ? 'var(--color-gord)' : char.rank === 'SS' || char.rank === 'S' ? 'var(--neon-red)' : 'var(--theme-bright)';
-                    let cNameClass = char.name === "니힐" ? "char-name text-glitch" : "char-name";
-                    let facColor = getFactionColor(char.faction);
-
                     const cardHtml = `
-                        <div class="char-card cyber-border char-fade-in decor-corners" style="animation-delay: ${delayTime}s" onclick="openCharModal(${i})">
+                        <div class="char-card cyber-border" onclick="openCharModal(${i})">
                             <div class="mini-profile-img"><img src="${char.img}"></div>
-                            <div class="char-info-wrap">
-                                <div class="card-header"><span>ID: <span style="color:${rColor}">${char.rank}</span></span></div>
-                                <div class="${cNameClass}">${char.name}</div>
-                                <div class="char-faction" style="color:${facColor}; border-color: ${facColor}; opacity: 0.9;">${char.faction}</div>
-                            </div>
+                            <div class="char-name">${char.name}</div>
+                            <div style="font-weight:bold;">${char.faction}</div>
                         </div>`;
                     container.insertAdjacentHTML('beforeend', cardHtml);
-                    delayTime += 0.04; 
                 }
             });
         }
@@ -908,152 +591,83 @@
             btn.classList.add('active'); renderCharacters(f);
         }
 
-        function prevChar(e) {
-            e.stopPropagation(); 
-            if(currentFilteredChars.length <= 1) return;
-            currentCharIndex = (currentCharIndex - 1 + currentFilteredChars.length) % currentFilteredChars.length;
-            openCharModal(currentFilteredChars[currentCharIndex], 'prev');
-        }
-
-        function nextChar(e) {
-            e.stopPropagation();
-            if(currentFilteredChars.length <= 1) return;
-            currentCharIndex = (currentCharIndex + 1) % currentFilteredChars.length;
-            openCharModal(currentFilteredChars[currentCharIndex], 'next');
-        }
-
-        function openCharModal(index, direction='pop') {
-            currentCharIndex = currentFilteredChars.indexOf(index);
+        function openCharModal(index) {
             const char = charDB[index];
-            const facColor = getFactionColor(char.faction || '무소속');
             const isExtra = (char.type === 'extra');
             
-            const scrollArea = document.getElementById('char-modal-scroll');
-            scrollArea.classList.remove('anim-next', 'anim-prev', 'anim-pop');
-            void scrollArea.offsetWidth; 
-            
-            if(direction === 'next') scrollArea.classList.add('anim-next');
-            else if(direction === 'prev') scrollArea.classList.add('anim-prev');
-            else scrollArea.classList.add('anim-pop');
-
             document.getElementById('md-img').src = char.img || '';
             document.getElementById('md-faction').innerText = `[ ${char.faction || '미상'} ]`;
-            document.getElementById('md-faction').style.color = facColor;
-            
-            const mdName = document.getElementById('md-name');
-            const mdRank = document.getElementById('md-rank');
-            if(char.name === "니힐") {
-                mdName.innerText = char.name; mdName.className = "m-name text-glitch";
-                mdRank.innerText = char.rank || 'UNKNOWN'; mdRank.className = "m-val text-glitch"; mdRank.style.color = 'var(--color-gord)';
-            } else {
-                mdName.innerText = char.name || '미상'; mdName.className = "m-name";
-                mdRank.innerText = char.rank || '미상'; mdRank.className = "m-val";
-                mdRank.style.color = (char.rank === 'SS' || char.rank === 'S') ? 'var(--neon-red)' : 'var(--theme-bright)';
-            }
-
+            document.getElementById('md-name').innerText = char.name || '미상';
+            document.getElementById('md-rank').innerText = char.rank || '미상';
             document.getElementById('md-age').innerText = char.age || '-';
             document.getElementById('md-detail').innerText = char.detail || '-';
 
             const tagsDiv = document.getElementById('md-tags');
             tagsDiv.innerHTML = '';
-            if (char.tags && Array.isArray(char.tags)) {
-                char.tags.forEach(t => {
-                    let cls = "tag";
-                    if(t === "시각장애" || t === "청각장애" || t === "수명연소" || t === "사이코패스") cls = "tag tag-warning";
-                    if(t === "글리치" || t === "규격외" || t === "더뮤트") cls = "tag tag-glitch"; 
-                    tagsDiv.innerHTML += `<span class="${cls}">#${t}</span>`;
-                });
+            if (char.tags) {
+                char.tags.forEach(t => { tagsDiv.innerHTML += `<span class="tag">#${t}</span>`; });
             }
 
-            document.getElementById('nav-arrow-left').style.display = currentFilteredChars.length > 1 ? 'block' : 'none';
-            document.getElementById('nav-arrow-right').style.display = currentFilteredChars.length > 1 ? 'block' : 'none';
-
             document.getElementById('box-mbti').style.display = isExtra ? 'none' : 'block';
-            document.getElementById('box-ennea').style.display = isExtra ? 'none' : 'block';
             document.getElementById('sec-combat').style.display = isExtra ? 'none' : 'block';
             document.getElementById('sec-exp').style.display = isExtra ? 'none' : 'block';
 
             if(!isExtra) {
                 document.getElementById('md-mbti').innerText = char.mbti || '-';
-                document.getElementById('md-ennea').innerText = char.ennea || '-';
                 document.getElementById('md-reso').innerText = char.reso || '-';
                 document.getElementById('md-ability').innerText = char.ability || '-';
                 document.getElementById('md-curtain').innerText = char.curtain || '-';
-                document.getElementById('md-tune').innerText = char.tune || '-';
-                document.getElementById('md-back').innerText = char.back || '-';
-                document.getElementById('md-over').innerText = char.over || '-';
                 
                 const expDiv = document.getElementById('md-expressions');
                 const charCode = char.code || 'default';
                 expDiv.innerHTML = `
-                    <div class="exp-box cyber-border" onclick="openImageViewer('https://igx.kr/u/tR/${charCode}/24')">
-                        <img src="https://igx.kr/u/tR/${charCode}/24" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'100\\' height=\\'100\\'><rect width=\\'100\\' height=\\'100\\' fill=\\'%23333\\'/></svg>'">
-                        <span class="exp-label">흥분</span>
+                    <div class="exp-box" onclick="openImageViewer('https://igx.kr/u/tR/${charCode}/24')">
+                        <img src="https://igx.kr/u/tR/${charCode}/24">
+                        <span class="exp-label">흥분ㅋ</span>
                     </div>
-                    <div class="exp-box cyber-border" onclick="openImageViewer('https://igx.kr/u/tR/${charCode}/15')">
-                        <img src="https://igx.kr/u/tR/${charCode}/15" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'100\\' height=\\'100\\'><rect width=\\'100\\' height=\\'100\\' fill=\\'%23333\\'/></svg>'">
-                        <span class="exp-label">부끄러움</span>
-                    </div>
-                    <div class="exp-box cyber-border" onclick="openImageViewer('https://igx.kr/u/tR/${charCode}/8')">
-                        <img src="https://igx.kr/u/tR/${charCode}/8" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'100\\' height=\\'100\\'><rect width=\\'100\\' height=\\'100\\' fill=\\'%23333\\'/></svg>'">
-                        <span class="exp-label">짜증</span>
-                    </div>
-                    <div class="exp-box cyber-border" onclick="openImageViewer('https://igx.kr/u/tR/${charCode}/26')">
-                        <img src="https://igx.kr/u/tR/${charCode}/26" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'100\\' height=\\'100\\'><rect width=\\'100\\' height=\\'100\\' fill=\\'%23333\\'/></svg>'">
-                        <span class="exp-label">능력사용</span>
+                    <div class="exp-box" onclick="openImageViewer('https://igx.kr/u/tR/${charCode}/8')">
+                        <img src="https://igx.kr/u/tR/${charCode}/8">
+                        <span class="exp-label">빡침ㅋ</span>
                     </div>
                 `;
             }
 
             const modal = document.getElementById('char-modal');
             document.body.classList.add('no-scroll'); 
-            
-            if(direction === 'pop') {
-                if (scrollArea) scrollArea.scrollTop = 0;
-            }
-
-            modal.style.display = 'flex'; void modal.offsetWidth; modal.classList.add('show'); 
+            modal.style.display = 'flex';
         }
         
         function closeCharModal() { 
-            const modal = document.getElementById('char-modal');
-            modal.classList.remove('show'); 
-            setTimeout(() => { modal.style.display = 'none'; document.body.classList.remove('no-scroll'); }, 300);
+            document.getElementById('char-modal').style.display = 'none'; 
+            document.body.classList.remove('no-scroll'); 
         }
 
         function openImageViewer(customUrl) {
             const imgSrc = customUrl || document.getElementById('md-img').src;
             document.getElementById('viewer-img').src = imgSrc;
-            const viewer = document.getElementById('img-viewer');
-            viewer.style.display = 'flex'; void viewer.offsetWidth; viewer.classList.add('show');
+            document.getElementById('img-viewer').style.display = 'flex';
         }
 
         function closeImageViewer() {
-            const viewer = document.getElementById('img-viewer');
-            viewer.classList.remove('show');
-            setTimeout(() => { viewer.style.display = 'none'; }, 300);
+            document.getElementById('img-viewer').style.display = 'none';
         }
 
         function openMapModal(type, key) {
-            const mapDataDict = themeTexts[currentTheme].mapData;
             if (!mapDataDict[type] || !mapDataDict[type][key]) return;
             const data = mapDataDict[type][key];
-
             document.getElementById('map-modal-title').innerHTML = data.title;
             document.getElementById('map-modal-desc').innerHTML = data.desc;
-            
-            const modal = document.getElementById('map-modal');
+            document.getElementById('map-modal').style.display = 'flex';
             document.body.classList.add('no-scroll');
-            modal.style.display = 'flex'; void modal.offsetWidth; modal.classList.add('show');
         }
 
         function closeMapModal() {
-            const modal = document.getElementById('map-modal');
-            modal.classList.remove('show');
-            setTimeout(() => { modal.style.display = 'none'; document.body.classList.remove('no-scroll'); }, 300);
+            document.getElementById('map-modal').style.display = 'none'; 
+            document.body.classList.remove('no-scroll'); 
         }
 
-        setTheme('theme-pop', document.getElementById('btn-theme-pop'), null);
+        // 초기화
+        renderSystemDB(systemDB);
         renderCharacters('ALL');
     </script>
 </body>
